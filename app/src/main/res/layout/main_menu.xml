@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--Date and side buttons-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:textSize="24sp"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:text="Viernes 24 Junio 2016"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:background="#CCFF90">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:id="@+id/income"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/todayIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$00.00"
+            android:textSize="48sp"
+            android:layout_toRightOf="@id/income"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$00.00"
+            android:textSize="24sp"
+            android:layout_below="@id/todayIncome"
+            android:layout_toRightOf="@id/income"/>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:background="#FFAB91">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:id="@+id/expense"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/todayExpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$00.00"
+            android:textSize="48sp"
+            android:layout_toRightOf="@id/expense"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$00.00"
+            android:textSize="24sp"
+            android:layout_below="@id/todayExpense"
+            android:layout_toRightOf="@id/expense"/>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:background="#80D8FF">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:id="@+id/balance"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/todayBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$00.00"
+            android:textSize="48sp"
+            android:layout_toRightOf="@id/balance"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$00.00"
+            android:textSize="24sp"
+            android:layout_below="@id/todayBalance"
+            android:layout_toRightOf="@id/balance"/>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>
