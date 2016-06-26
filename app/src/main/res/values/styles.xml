@@ -1,8 +1,22 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="android:logo">@mipmap/ic_launcher</item>
-        <item name="android:title">@string/app_name</item>
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+
     </style>
 
+    <style name="AppToolbar" parent="AppTheme">
+
+        <item name="android:title">@string/app_name</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="logo">@mipmap/ic_launcher</item>
+        <item name="elevation">4dp</item>
+
+    </style>
+
+    <dimen name="left_margin_toolbar">16dp</dimen>
 </resources>
