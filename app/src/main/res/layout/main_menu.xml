@@ -1,146 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <!--Date and side buttons-->
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/date_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_height="?actionBarSize"
+        android:gravity="center"
+
+        >
 
         <ImageView
-            android:src="@drawable/left_arrow.svg"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@android:color/darker_gray"/>
+            android:id="@+id/date_left_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:contentDescription="@string/date_left_arrow"
+            android:src="@drawable/left_arrow" />
 
         <TextView
-            android:layout_width="0dp"
-            android:textSize="24sp"
-            android:layout_weight="6"
-            android:gravity="center"
-            android:inputType="none"
-            android:layout_height="match_parent"
-            android:text="25 Diciembre 2016"/>
+            android:id="@+id/date"
+            style="@android:style/TextAppearance.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/date_left_arrow"
+            android:layout_toRightOf="@id/date_left_arrow"
+            android:minWidth="@dimen/min_date_width" />
 
         <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:id="@+id/date_right_arrow"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@android:color/darker_gray"/>
+            android:layout_toEndOf="@id/date"
+            android:layout_toRightOf="@id/date"
+            android:contentDescription="@string/date_right_arrow"
+            android:src="@drawable/right_arrow" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:gravity="center"
-        android:background="#CCFF90">
+        android:background="#CCFF90"
+        android:gravity="center">
 
         <ImageView
-            android:layout_width="150dp"
             android:id="@+id/income"
-            android:layout_alignParentLeft="true"
-            android:layout_height="match_parent" />
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true" />
+
         <TextView
             android:id="@+id/todayIncome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$00.00"
-            android:textSize="48sp"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/income"
-            android:layout_centerVertical="true"/>
+            android:text="$00.00"
+            android:textSize="48sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$00.00"
-            android:textSize="24sp"
             android:layout_below="@id/todayIncome"
-            android:layout_toRightOf="@id/income"/>
+            android:layout_toRightOf="@id/income"
+            android:text="$00.00"
+            android:textSize="24sp" />
+
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            />
+            android:layout_centerVertical="true" />
 
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:gravity="center"
-        android:background="#FFAB91">
+        android:background="#FFAB91"
+        android:gravity="center">
 
         <ImageView
-            android:layout_width="150dp"
             android:id="@+id/expense"
-            android:layout_alignParentLeft="true"
-            android:layout_height="match_parent" />
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true" />
+
         <TextView
             android:id="@+id/todayExpense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$00.00"
-            android:textSize="48sp"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/expense"
-            android:layout_centerVertical="true"/>
+            android:text="$00.00"
+            android:textSize="48sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$00.00"
-            android:textSize="24sp"
             android:layout_below="@id/todayExpense"
-            android:layout_toRightOf="@id/expense"/>
+            android:layout_toRightOf="@id/expense"
+            android:text="$00.00"
+            android:textSize="24sp" />
+
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            />
+            android:layout_centerVertical="true" />
 
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:gravity="center"
-        android:background="#80D8FF">
+        android:background="#80D8FF"
+        android:gravity="center">
 
         <ImageView
-            android:layout_width="150dp"
             android:id="@+id/balance"
-            android:layout_alignParentLeft="true"
-            android:layout_height="match_parent" />
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true" />
+
         <TextView
             android:id="@+id/todayBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$00.00"
-            android:textSize="48sp"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/balance"
-            android:layout_centerVertical="true"/>
+            android:text="$00.00"
+            android:textSize="48sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$00.00"
-            android:textSize="24sp"
             android:layout_below="@id/todayBalance"
-            android:layout_toRightOf="@id/balance"/>
+            android:layout_toRightOf="@id/balance"
+            android:text="$00.00"
+            android:textSize="24sp" />
+
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            />
+            android:layout_centerVertical="true" />
 
     </RelativeLayout>
 
