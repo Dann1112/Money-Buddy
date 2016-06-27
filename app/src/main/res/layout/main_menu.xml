@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/date_left_arrow"
             android:layout_width="wrap_content"
-            android:layout_height="?actionBarSize"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:contentDescription="@string/date_left_arrow"
@@ -31,12 +31,15 @@
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/date_left_arrow"
             android:layout_toRightOf="@id/date_left_arrow"
-            android:minWidth="@dimen/min_date_width" />
+            android:gravity="center"
+            android:minEms="10"
+            android:minWidth="@dimen/min_date_width"
+            android:text="@string/default_date" />
 
         <ImageView
             android:id="@+id/date_right_arrow"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_toEndOf="@id/date"
             android:layout_toRightOf="@id/date"
             android:contentDescription="@string/date_right_arrow"
