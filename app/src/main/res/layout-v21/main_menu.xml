@@ -46,108 +46,123 @@
 
     </RelativeLayout>
 
-
+    <!--Income Menu Item-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/first_keyline"
         android:layout_weight="2"
         android:background="#CCFF90"
-        android:gravity="center">
+        android:elevation="3dp"
+        android:gravity="center"
+        android:padding="4dp">
+
+        <com.manrique.daniel.moneybuddy.Icon
+            android:id="@+id/income_icon"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/income_icon"
+            android:src="@drawable/income" />
 
         <ImageView
-            android:id="@+id/income"
-            android:layout_width="150dp"
-
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true" />
-
-        <TextView
-            android:id="@+id/todayIncome"
+            android:id="@+id/go_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/income"
-            android:text="$00.00"
-            android:textSize="48sp" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:contentDescription="@string/go_income"
             android:src="@drawable/right_arrow" />
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="2"
-        android:background="#FFAB91"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/expense"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true" />
-
         <TextView
-            android:id="@+id/todayExpense"
+            android:id="@+id/income_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/expense"
-            android:text="$00.00"
-            android:textSize="48sp" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
+            android:layout_toStartOf="@id/go_income"
+            android:gravity="end"
+            android:text="@string/default_amount"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_large" />
 
     </RelativeLayout>
 
+    <!--Expense Menu Item-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/first_keyline"
         android:layout_weight="2"
-        android:background="#80D8FF"
-        android:gravity="center">
+        android:background="@color/expense"
+        android:elevation="3dp"
+        android:gravity="center"
+        android:padding="4dp">
+
+        <com.manrique.daniel.moneybuddy.Icon
+            android:id="@+id/expense_icon"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/income_icon"
+            android:src="@drawable/expense" />
 
         <ImageView
-            android:id="@+id/balance"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true" />
+            android:id="@+id/go_expense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/go_income"
+            android:src="@drawable/right_arrow" />
 
         <TextView
-            android:id="@+id/todayBalance"
+            android:id="@+id/expense_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/balance"
-            android:text="$00.00"
-            android:textSize="48sp" />
+            android:layout_toStartOf="@id/go_expense"
+            android:gravity="end"
+            android:text="@string/default_amount"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_large" />
+
+    </RelativeLayout>
+
+    <!--Balance Menu Item-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/first_keyline"
+        android:layout_weight="2"
+        android:background="@color/balance"
+        android:elevation="3dp"
+        android:gravity="center"
+        android:padding="4dp">
+
+        <com.manrique.daniel.moneybuddy.Icon
+            android:id="@+id/balance_icon"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/income_icon"
+            android:src="@drawable/balance" />
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
+            android:id="@+id/go_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/go_income"
+            android:src="@drawable/right_arrow" />
+
+        <TextView
+            android:id="@+id/expense_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/go_balance"
+            android:gravity="end"
+            android:text="@string/default_amount"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_large" />
 
     </RelativeLayout>
 
