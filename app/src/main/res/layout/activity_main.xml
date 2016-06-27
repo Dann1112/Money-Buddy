@@ -12,16 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:popupTheme="@style/AppToolbar"
-        app:theme="@style/AppToolbar"
-        />
+        app:theme="@style/AppToolbar" />
 
 
     <FrameLayout
         android:id="@+id/mainFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        android:padding="@dimen/frame_padding">
+        android:layout_below="@id/toolbar">
 
     </FrameLayout>
 

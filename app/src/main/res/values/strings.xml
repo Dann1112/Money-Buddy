@@ -3,4 +3,6 @@
     <string name="date_left_arrow">Go One Day Back</string>
     <string name="date_right_arrow">Go One Day Forward</string>
     <string name="default_date">Date Not Found</string>
+    <string name="income">Income</string>
+    <string name="default_amount">$ 00.00</string>
 </resources>

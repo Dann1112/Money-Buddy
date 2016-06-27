@@ -25,7 +25,7 @@ public class MainMenuFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_menu, container, false);
         dateView = (TextView) view.findViewById(R.id.date);
-        dateView.setText(new SimpleDateFormat("dd / MMMM / yyyy", Locale.getDefault()).format(new Date()));
+        dateView.setText(new SimpleDateFormat("dd - MMM - yy", Locale.getDefault()).format(new Date()));
         return view;
 
 
