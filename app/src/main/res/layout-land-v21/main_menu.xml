@@ -117,7 +117,9 @@
                     android:id="@+id/expense_icon"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/left_margin_toolbar"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
                     android:contentDescription="@string/income_icon"
                     android:src="@drawable/expense" />
 
@@ -151,7 +153,8 @@
             android:layout_margin="@dimen/first_keyline"
             android:layout_weight="1"
             android:background="@color/balance"
-            android:elevation="3dp">
+            android:elevation="3dp"
+            android:padding="4dp">
 
 
             <LinearLayout
@@ -188,8 +191,8 @@
                 android:id="@+id/go_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/balance_layout"
                 android:contentDescription="@string/go_income"
                 android:src="@drawable/right_arrow" />
 
