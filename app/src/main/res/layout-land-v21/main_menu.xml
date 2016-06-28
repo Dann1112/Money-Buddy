@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Date and side buttons-->
+    <RelativeLayout
+        android:id="@+id/date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:elevation="2dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/date_left_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/first_keyline"
+            android:contentDescription="@string/date_left_arrow"
+            android:src="@drawable/left_arrow" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:maxEms="40"
+            android:text="@string/default_date"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_medium" />
+
+        <ImageView
+            android:id="@+id/date_right_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/first_keyline"
+            android:contentDescription="@string/date_right_arrow"
+            android:src="@drawable/right_arrow" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/date_layout"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--Income Menu Item-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/first_keyline"
+                android:layout_weight="1"
+                android:background="#CCFF90"
+                android:elevation="3dp"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <com.manrique.daniel.moneybuddy.Icon
+                    android:id="@+id/income_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:contentDescription="@string/income_icon"
+                    android:src="@drawable/income" />
+
+                <ImageView
+                    android:id="@+id/go_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/go_income"
+                    android:src="@drawable/right_arrow" />
+
+                <TextView
+                    android:id="@+id/income_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/go_income"
+                    android:gravity="end"
+                    android:text="@string/default_amount"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_xsmall" />
+
+            </RelativeLayout>
+
+            <!--Expense Menu Item-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/first_keyline"
+                android:layout_weight="1"
+                android:background="@color/expense"
+                android:elevation="3dp"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <com.manrique.daniel.moneybuddy.Icon
+                    android:id="@+id/expense_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/left_margin_toolbar"
+                    android:contentDescription="@string/income_icon"
+                    android:src="@drawable/expense" />
+
+                <ImageView
+                    android:id="@+id/go_expense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/go_income"
+                    android:src="@drawable/right_arrow" />
+
+                <TextView
+                    android:id="@+id/expense_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/go_expense"
+                    android:gravity="end"
+                    android:text="@string/default_amount"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_xsmall" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!--Balance Menu Item-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/first_keyline"
+            android:layout_weight="1"
+            android:background="@color/balance"
+            android:elevation="3dp">
+
+
+            <LinearLayout
+                android:id="@+id/balance_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <com.manrique.daniel.moneybuddy.Icon
+                    android:id="@+id/balance_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="@dimen/left_margin_toolbar"
+                    android:contentDescription="@string/income_icon"
+                    android:src="@drawable/balance" />
+
+
+                <TextView
+                    android:id="@+id/balance_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/default_amount"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_large" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/go_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/balance_layout"
+                android:contentDescription="@string/go_income"
+                android:src="@drawable/right_arrow" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

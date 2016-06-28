@@ -4,7 +4,7 @@
     <string name="date_right_arrow">Go One Day Forward</string>
     <string name="default_date">Date Not Found</string>
     <string name="income">Income</string>
-    <string name="default_amount">$ 00.00</string>
+    <string name="default_amount">$ 100,000.00</string>
     <string name="income_icon">Income</string>
     <string name="go_income">Add new income</string>
 </resources>

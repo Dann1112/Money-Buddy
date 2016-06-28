@@ -7,6 +7,7 @@
     <dimen name="text_size_large">28sp</dimen>
     <dimen name="text_size_medium">24sp</dimen>
     <dimen name="text_size_small">20sp</dimen>
+    <dimen name="text_size_xsmall">16sp</dimen>
     <dimen name="min_date_width">100dp</dimen>
 
     <dimen name="first_keyline">16dp</dimen>
