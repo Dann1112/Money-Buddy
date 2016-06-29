@@ -3,6 +3,7 @@
     android:id="@+id/category_layout"
     android:layout_width="150dp"
     android:layout_height="150dp"
+    android:elevation="3dp"
     android:gravity="center"
     android:orientation="vertical">
 

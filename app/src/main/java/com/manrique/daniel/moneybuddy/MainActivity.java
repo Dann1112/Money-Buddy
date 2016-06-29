@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setToolbar();
-        loadFragment(savedInstanceState, new MainMenuFragment());
+        loadFragment(savedInstanceState, new CategoriesFragment());
 
     }
 
@@ -44,4 +44,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 }
