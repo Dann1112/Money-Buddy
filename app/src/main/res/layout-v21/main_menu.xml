@@ -84,6 +84,13 @@
             android:textColor="@android:color/black"
             android:textSize="@dimen/text_size_small" />
 
+        <Button
+            android:id="@+id/income_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent" />
+
+
     </RelativeLayout>
 
     <!--Expense Menu Item-->
@@ -124,6 +131,12 @@
             android:textColor="@android:color/black"
             android:textSize="@dimen/text_size_small" />
 
+        <Button
+            android:id="@+id/expense_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent" />
+
     </RelativeLayout>
 
     <!--Balance Menu Item-->
@@ -163,6 +176,12 @@
             android:text="@string/default_amount"
             android:textColor="@android:color/black"
             android:textSize="@dimen/text_size_small" />
+
+        <Button
+            android:id="@+id/balance_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent" />
 
     </RelativeLayout>
 
