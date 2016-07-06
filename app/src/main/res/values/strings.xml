@@ -20,5 +20,6 @@
     <string name="money_sign">$</string>
     <string name="new_item_title">New Item</string>
     <string name="add_new_item">Add New Item</string>
+    <string name="cat_name">Category Name</string>
 
 </resources>
