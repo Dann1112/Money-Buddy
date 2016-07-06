@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_item"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:gravity="center_vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxEms="15"
+        android:text="@string/default_item_name"
+        android:textSize="@dimen/text_size_xsmall" />
+
+    <TextView
+        android:id="@+id/item_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@id/item_name"
+        android:layout_toRightOf="@id/item_name"
+        android:gravity="end"
+        android:maxEms="15"
+        android:text="@string/default_amount"
+        android:textSize="@dimen/text_size_xsmall" />
+
+</RelativeLayout>

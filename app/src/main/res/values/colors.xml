@@ -3,7 +3,10 @@
     <color name="colorPrimary">#00BCD4</color>
     <color name="colorPrimaryDark">#0097A7</color>
     <color name="colorAccent">#FFC107</color>
+
     <color name="expense">#FFAB91</color>
     <color name="balance">#80D8FF</color>
+
+    <color name="item_light_gray">#c4c4c4</color>
 
 </resources>
