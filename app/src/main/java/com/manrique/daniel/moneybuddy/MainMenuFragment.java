@@ -47,9 +47,10 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
             getFragmentManager().beginTransaction()
                     .replace(R.id.mainFrame, new CategoriesFragment()).commit();
 
-        else if (view == expense_btn)
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.mainFrame, new CategoriesFragment()).commit();
+        else if (view == expense_btn) {
+            NewItemDialog newItemDialog = new NewItemDialog();
+            newItemDialog.show(getFragmentManager(), "My Dialog");
+        }
 
         else if (view == balance_btn)
             getFragmentManager().beginTransaction()

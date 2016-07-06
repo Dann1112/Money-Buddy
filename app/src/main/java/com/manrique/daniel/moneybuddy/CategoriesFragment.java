@@ -3,13 +3,12 @@ package com.manrique.daniel.moneybuddy;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
-public class CategoriesFragment extends Fragment {
+public class CategoriesFragment extends android.support.v4.app.Fragment {
 
 
     //Colors from Google Material Design ( A200 Colors )

@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/new_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/new_item_title"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:id="@+id/new_item_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/new_item_title"
+            android:text="@string/new_item_description"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/set_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/new_item_description"
+            android:inputType="textCapWords"
+            android:maxLength="15" />
+
+        <TextView
+            android:id="@+id/new_item_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/set_description"
+            android:layout_marginTop="10dp"
+            android:text="@string/amount"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/set_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/new_item_amount"
+            android:inputType="numberDecimal" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:gravity="end"
+        android:padding="8dp">
+
+
+        <Button
+            android:id="@+id/cancel_new_item_button"
+            style="?android:borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:text="@string/cancel_new_item"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/confirm_new_item_button"
+            style="?android:borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:enabled="false"
+            android:padding="8dp"
+            android:text="@string/confirm_new_item"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+</LinearLayout>

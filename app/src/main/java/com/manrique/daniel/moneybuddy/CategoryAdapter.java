@@ -26,6 +26,7 @@ public class CategoryAdapter extends BaseAdapter {
         this.icons = icons;
     }
 
+
     @Override
     public int getCount() {
         return titles.length + 1;
@@ -44,6 +45,7 @@ public class CategoryAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
+
         View cat;
 
         //Set last view as the "New Category" view
@@ -52,6 +54,7 @@ public class CategoryAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             cat = inflater.inflate(R.layout.category_new_item, viewGroup, false);
+
             return cat;
         }
 
