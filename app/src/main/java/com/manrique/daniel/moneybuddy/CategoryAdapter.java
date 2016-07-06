@@ -68,9 +68,9 @@ public class CategoryAdapter extends BaseAdapter {
 
         }
         //Else, if it is a recycled view, just return last configuration
-        else {
+        else
             cat = view;
-        }
+
 
         //Set values to the view
         TextView txt = (TextView) cat.findViewById(R.id.category_name);
