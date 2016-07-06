@@ -2,7 +2,6 @@ package com.manrique.daniel.moneybuddy;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class MainMenuFragment extends android.support.v4.app.Fragment {
+public class MainMenuFragment extends android.support.v4.app.Fragment
+        implements View.OnClickListener {
 
     TextView dateView;
     Button income_btn, expense_btn, balance_btn;
@@ -33,38 +33,27 @@ public class MainMenuFragment extends android.support.v4.app.Fragment {
         expense_btn = (Button) view.findViewById(R.id.expense_button);
         balance_btn = (Button) view.findViewById(R.id.balance_button);
 
-        setListener(income_btn, new CategoriesFragment());
-        setListener(expense_btn, new CategoriesFragment());
-        setListener(balance_btn, new CategoriesFragment());
-        income_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().beginTransaction().
-                        replace(R.id.mainFrame, new CategoriesFragment()).commit();
-
-            }
-        });
-
-
+        income_btn.setOnClickListener(this);
+        expense_btn.setOnClickListener(this);
+        balance_btn.setOnClickListener(this);
 
         return view;
     }
 
-    public void setListener(View view, final Fragment destination) {
+    @Override
+    public void onClick(View view) {
 
-        View.OnClickListener listener = new View.OnClickListener() {
+        if (view == income_btn)
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.mainFrame, new CategoriesFragment()).commit();
 
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.mainFrame, destination).commit();
-            }
-        };
+        else if (view == expense_btn)
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.mainFrame, new CategoriesFragment()).commit();
 
-        view.setOnClickListener(listener);
+        else if (view == balance_btn)
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.mainFrame, new CategoriesFragment()).commit();
 
     }
-
-
-
 }
