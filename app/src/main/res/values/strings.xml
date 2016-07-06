@@ -7,7 +7,7 @@
     <string name="default_amount">$ 928,319.00</string>
     <string name="income_icon">Income</string>
     <string name="go_income">Add new income</string>
-    <string name="add">Add</string>
+    <string name="add">ADD</string>
     <string name="default_item_name">Example</string>
     <string name="usual_expense">Usual Expense</string>
     <string name="spent_today">How did you spend today ?</string>
@@ -19,5 +19,6 @@
     <string name="cancel_new_item">DISMISS</string>
     <string name="money_sign">$</string>
     <string name="new_item_title">New Item</string>
+    <string name="add_new_item">Add New Item</string>
 
 </resources>
