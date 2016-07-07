@@ -9,13 +9,13 @@ import android.widget.TextView;
 
 public class ItemListAdapter extends BaseAdapter {
 
-    private String itemName;
-    private String itemAmount;
+    private String[] itemName;
+    private String[] itemAmount;
     private int length;
     private Context context;
 
 
-    public ItemListAdapter(Context contex, String itemName, String itemAmount, int length) {
+    public ItemListAdapter(Context context, String[] itemName, String[] itemAmount, int length) {
 
         this.context = context;
         this.itemName = itemName;
@@ -43,18 +43,7 @@ public class ItemListAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         TextView itemNameView, itemAmountView;
-        View itemLayout;
         View list_item;
-
-        if (i == length) {
-
-            LayoutInflater inflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            list_item = inflater.inflate(R.layout.new_list_item, viewGroup, false);
-
-            return list_item;
-
-        }
 
         if (view == null) {
 
@@ -65,15 +54,11 @@ public class ItemListAdapter extends BaseAdapter {
         } else
             list_item = view;
 
-        itemLayout = list_item.findViewById(R.id.list_item);
         itemNameView = (TextView) list_item.findViewById(R.id.item_name);
         itemAmountView = (TextView) list_item.findViewById(R.id.item_amount);
 
-        if (i % 2 != 0)
-            itemLayout.setBackgroundResource(R.color.item_light_gray);
-
-        itemNameView.setText(itemName);
-        itemAmountView.setText(itemAmount);
+        itemNameView.setText(itemName[i]);
+        itemAmountView.setText(itemAmount[i]);
 
         return list_item;
 

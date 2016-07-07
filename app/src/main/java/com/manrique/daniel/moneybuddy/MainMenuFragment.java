@@ -54,7 +54,7 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
 
         else if (view == balance_btn)
             getFragmentManager().beginTransaction()
-                    .replace(R.id.mainFrame, new CategoriesFragment()).commit();
+                    .replace(R.id.mainFrame, new CategoryItemsListFragment()).commit();
 
     }
 }
