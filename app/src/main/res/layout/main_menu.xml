@@ -62,7 +62,7 @@
 
         <com.manrique.daniel.moneybuddy.Icon
             android:id="@+id/income_icon"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/income_icon"
             android:src="@drawable/income" />
@@ -109,7 +109,7 @@
 
         <com.manrique.daniel.moneybuddy.Icon
             android:id="@+id/expense_icon"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/income_icon"
             android:src="@drawable/expense" />
@@ -156,7 +156,7 @@
 
         <com.manrique.daniel.moneybuddy.Icon
             android:id="@+id/balance_icon"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/income_icon"
             android:src="@drawable/balance" />
