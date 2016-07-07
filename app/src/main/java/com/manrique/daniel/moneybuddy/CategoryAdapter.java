@@ -1,6 +1,7 @@
 package com.manrique.daniel.moneybuddy;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class CategoryAdapter extends BaseAdapter {
+public class CategoryAdapter extends BaseAdapter implements View.OnClickListener {
 
     private final String[] titles;
     private final String[] amount;
@@ -65,6 +66,7 @@ public class CategoryAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             cat = inflater.inflate(R.layout.category_item, viewGroup, false);
+            cat.setOnClickListener(this);
 
         }
         //Else, if it is a recycled view, just return last configuration
@@ -84,6 +86,14 @@ public class CategoryAdapter extends BaseAdapter {
 
         return cat;
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        FragmentManager fragmentManager = ((MainActivity) context).getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.mainFrame, new CategoryItemsListFragment())
+                .addToBackStack(null).commit();
     }
 }
 
