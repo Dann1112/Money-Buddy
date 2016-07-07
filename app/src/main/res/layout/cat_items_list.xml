@@ -4,6 +4,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/item_list_header"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@color/colorPrimary"
@@ -12,7 +13,7 @@
         android:padding="24dp">
 
         <ImageView
-            android:id="@+id/cat_name"
+            android:id="@+id/header_icon"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerVertical="true"
@@ -22,11 +23,12 @@
             android:src="@drawable/income" />
 
         <TextView
+            android:id="@+id/description_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/cat_name"
-            android:layout_toRightOf="@id/cat_name"
+            android:layout_toEndOf="@id/header_icon"
+            android:layout_toRightOf="@id/header_icon"
             android:text="@string/default_item_name"
             android:textSize="@dimen/text_size_large" />
 

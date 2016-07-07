@@ -1,6 +1,8 @@
 package com.manrique.daniel.moneybuddy;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,8 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
     private final int[] colors;
     private final int[] icons;
     private Context context;
+    private ImageView icon;
+    private TextView description;
 
     public CategoryAdapter(Context context, String[] titles, String[] amount, int[] colors,
                            int[] icons) {
@@ -90,9 +94,20 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
+        CategoryItemsListFragment newFrag = new CategoryItemsListFragment();
+        Bundle args = new Bundle();
+        ColorDrawable background = (ColorDrawable) view.getBackground();
+        description = (TextView) view.findViewById(R.id.category_name);
+
+        icon = (ImageView) view.findViewById(R.id.category_icon);
+
+        args.putInt("color", background.getColor());
+        args.putString("description", (String) description.getText());
+
+        newFrag.setArguments(args);
         FragmentManager fragmentManager = ((MainActivity) context).getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.mainFrame, new CategoryItemsListFragment())
+                .replace(R.id.mainFrame, newFrag)
                 .addToBackStack(null).commit();
     }
 }

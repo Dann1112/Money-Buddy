@@ -26,7 +26,7 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
     private final String[] titles = {"Transporte", "Comida", "Escuela"};
     private final String[] amounts = {" $300.30", "$ 64.50", "52.89"};
 
-    private final int[] colors = {Color.parseColor(red), Color.parseColor(pink), Color.parseColor(purple)};
+    private final int[] colors = {Color.parseColor(orange), Color.parseColor(blue), Color.parseColor(purple)};
     private final int[] icons = {R.drawable.balance, R.drawable.right_arrow, R.drawable.left_arrow};
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -49,7 +49,7 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
                     .addToBackStack(null).commit();
         } else if (view == expense_btn) {
             getFragmentManager().beginTransaction()
-                    .replace(R.id.mainFrame, new CategoryItemsListFragment())
+                    .replace(R.id.mainFrame, new CategoriesFragment())
                     .addToBackStack(null).commit();
         }
 
