@@ -1,13 +1,14 @@
 package com.manrique.daniel.moneybuddy;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class ItemListAdapter extends BaseAdapter {
+public class ItemListAdapter extends BaseAdapter implements View.OnClickListener {
 
     private String[] itemName;
     private String[] itemAmount;
@@ -50,6 +51,7 @@ public class ItemListAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             list_item = inflater.inflate(R.layout.list_item, viewGroup, false);
+            list_item.setOnClickListener(this);
 
         } else
             list_item = view;
@@ -61,6 +63,17 @@ public class ItemListAdapter extends BaseAdapter {
         itemAmountView.setText(itemAmount[i]);
 
         return list_item;
+
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
+        FragmentManager fragmentManager = ((MainActivity) context).getSupportFragmentManager();
+
+        NewItemDialog newItemDialog = new NewItemDialog();
+        newItemDialog.show(fragmentManager, "New Item");
 
     }
 }
