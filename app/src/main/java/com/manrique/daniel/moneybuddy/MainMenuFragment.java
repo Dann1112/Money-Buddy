@@ -43,18 +43,15 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
     @Override
     public void onClick(View view) {
 
-        if (view == income_btn)
+        if (view == income_btn) {
             getFragmentManager().beginTransaction()
-                    .replace(R.id.mainFrame, new CategoriesFragment()).commit();
-
-        else if (view == expense_btn) {
-            NewItemDialog newItemDialog = new NewItemDialog();
-            newItemDialog.show(getFragmentManager(), "My Dialog");
+                    .replace(R.id.mainFrame, new CategoriesFragment())
+                    .addToBackStack(null).commit();
+        } else if (view == expense_btn) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.mainFrame, new CategoryItemsListFragment())
+                    .addToBackStack(null).commit();
         }
-
-        else if (view == balance_btn)
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.mainFrame, new CategoryItemsListFragment()).commit();
 
     }
 }
