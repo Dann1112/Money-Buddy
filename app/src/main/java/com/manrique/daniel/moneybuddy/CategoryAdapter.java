@@ -60,6 +60,16 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             cat = inflater.inflate(R.layout.category_new_item, viewGroup, false);
 
+            cat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentManager fragmentManager = ((MainActivity) context).getSupportFragmentManager();
+
+                    NewCatDialog newCatDialog = new NewCatDialog();
+                    newCatDialog.show(fragmentManager, "New Cat");
+                }
+            });
+
             return cat;
         }
 
@@ -70,6 +80,7 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             cat = inflater.inflate(R.layout.category_item, viewGroup, false);
+
             cat.setOnClickListener(this);
 
         }

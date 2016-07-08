@@ -22,5 +22,10 @@
     <string name="add_new_item">Add New Item</string>
     <string name="cat_name">Category Name</string>
     <string name="publicity">Help the developer by clicking this add</string>
+    <string name="new_category_title">New Category</string>
+    <string name="new_category_description">New Category Name:</string>
+    <string name="icon">Set Icon:</string>
+    <string name="color">Set Color:</string>
+    <string name="new_category_icon">Icon for New Category</string>
 
 </resources>
