@@ -27,5 +27,8 @@
     <string name="icon">Set Icon:</string>
     <string name="color">Set Color:</string>
     <string name="new_category_icon">Icon for New Category</string>
+    <string name="create">CREATE</string>
+    <string name="new_category_color">Color for New Category</string>
+    <string name="cancel_new_cat">Cancel creation of new category</string>
 
 </resources>

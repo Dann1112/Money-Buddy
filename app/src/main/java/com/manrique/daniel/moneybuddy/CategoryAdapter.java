@@ -19,8 +19,6 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
     private final int[] colors;
     private final int[] icons;
     private Context context;
-    private ImageView icon;
-    private TextView description;
 
     public CategoryAdapter(Context context, String[] titles, String[] amount, int[] colors,
                            int[] icons) {
@@ -64,9 +62,8 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
                 @Override
                 public void onClick(View view) {
                     FragmentManager fragmentManager = ((MainActivity) context).getSupportFragmentManager();
-
-                    NewCatDialog newCatDialog = new NewCatDialog();
-                    newCatDialog.show(fragmentManager, "New Cat");
+                    fragmentManager.beginTransaction().replace(R.id.mainFrame, new NewCatDialog())
+                            .addToBackStack(null).commit();
                 }
             });
 
@@ -105,6 +102,10 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
+
+        ImageView icon;
+        TextView description;
+
         CategoryItemsListFragment newFrag = new CategoryItemsListFragment();
         Bundle args = new Bundle();
         ColorDrawable background = (ColorDrawable) view.getBackground();
