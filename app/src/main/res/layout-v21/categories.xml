@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:maxEms="40"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/default_date"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_medium" />
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+        android:layout_below="@id/date"
     android:fillViewport="true"
 
     >
@@ -10,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,3 +99,4 @@
 
     </LinearLayout>
 </ScrollView>
+</RelativeLayout>
