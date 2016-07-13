@@ -43,11 +43,6 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
             grid.setAdapter(adapter);
             grid.setExpanded(true);
 
-
-            grid = (ExpandableHeightGridView) view.findViewById(R.id.grid_unusual);
-            grid.setAdapter(adapter);
-            grid.setExpanded(true);
-
             return view;
         } else return null;
 
