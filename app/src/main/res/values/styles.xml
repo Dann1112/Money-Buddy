@@ -15,8 +15,16 @@
         <item name="android:background">@color/colorPrimary</item>
         <item name="logo">@mipmap/ic_launcher</item>
         <item name="elevation">4dp</item>
+        <item name="android:textColor">#FFFFFF</item>
 
     </style>
+
+    <style name="TextInToolbar">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">@dimen/text_size_xxsmall</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
     <dimen name="left_margin_toolbar">16dp</dimen>
 </resources>

@@ -25,16 +25,18 @@
 
             <TextView
                 android:id="@id/new_category_title"
+                style="@style/TextInToolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:layout_toEndOf="@id/cancel_action"
                 android:layout_toRightOf="@id/cancel_action"
-                android:text="@string/new_category_title"
-                android:textSize="@dimen/text_size_small" />
+                android:gravity="center_vertical"
+                android:text="@string/new_category_title" />
 
             <TextView
+                style="@style/TextInToolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"

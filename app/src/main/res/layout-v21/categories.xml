@@ -4,26 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/date"
+    <LinearLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_alignParentTop="true"
         android:background="@color/colorPrimary"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:maxEms="40"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:text="@string/default_date"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/text_size_medium" />
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:maxEms="40"
+            android:text="@string/default_date"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_xxsmall"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/edit" />
+
+    </LinearLayout>
 
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-        android:layout_below="@id/date"
+        android:layout_below="@id/toolbar"
     android:fillViewport="true"
 
     >

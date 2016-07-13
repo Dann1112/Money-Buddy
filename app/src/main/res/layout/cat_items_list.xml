@@ -4,6 +4,7 @@
 
     <TextView
         android:id="@+id/date"
+        style="@style/TextInToolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
@@ -13,9 +14,7 @@
         android:maxEms="40"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:text="@string/default_date"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/text_size_medium" />
+        android:text="@string/default_date" />
 
     <RelativeLayout
         android:id="@+id/item_list_header"

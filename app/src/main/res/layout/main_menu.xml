@@ -21,6 +21,7 @@
             android:src="@mipmap/ic_launcher" />
 
         <TextView
+            style="@style/TextInToolbar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="12dp"
@@ -28,8 +29,7 @@
             android:layout_toEndOf="@id/cancel_action"
             android:layout_toRightOf="@id/cancel_action"
             android:gravity="center_vertical"
-            android:text="@string/app_name"
-            android:textSize="@dimen/text_size_small" />
+            android:text="@string/app_name" />
 
     </RelativeLayout>
 
@@ -51,10 +51,11 @@
             android:layout_marginLeft="@dimen/first_keyline"
             android:layout_marginStart="@dimen/first_keyline"
             android:contentDescription="@string/date_left_arrow"
-            android:src="@drawable/left_arrow" />
+            android:src="@drawable/arrow_left" />
 
         <TextView
             android:id="@+id/date"
+            style="@style/TextInToolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -62,7 +63,6 @@
             android:gravity="center"
             android:maxEms="40"
             android:text="@string/default_date"
-            android:textColor="@android:color/black"
             android:textSize="@dimen/text_size_medium" />
 
         <ImageView
@@ -74,7 +74,7 @@
             android:layout_marginEnd="@dimen/first_keyline"
             android:layout_marginRight="@dimen/first_keyline"
             android:contentDescription="@string/date_right_arrow"
-            android:src="@drawable/right_arrow" />
+            android:src="@drawable/arrow_right" />
 
     </RelativeLayout>
 
@@ -103,7 +103,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:contentDescription="@string/go_income"
-            android:src="@drawable/right_arrow" />
+            android:src="@drawable/arrow_right_black" />
 
         <TextView
             android:id="@+id/income_amount"
@@ -150,7 +150,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:contentDescription="@string/go_income"
-            android:src="@drawable/right_arrow" />
+            android:src="@drawable/arrow_right_black" />
 
         <TextView
             android:id="@+id/expense_amount"
@@ -197,7 +197,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:contentDescription="@string/go_income"
-            android:src="@drawable/right_arrow" />
+            android:src="@drawable/arrow_right_black" />
 
         <TextView
             android:id="@+id/expense_balance"
