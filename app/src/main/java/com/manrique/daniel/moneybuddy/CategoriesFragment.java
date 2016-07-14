@@ -3,6 +3,7 @@ package com.manrique.daniel.moneybuddy;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,12 +33,25 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (isAdded()) {
 
+            View new_item;
             CategoryAdapter adapter =
                     new CategoryAdapter(this.getContext(), titles, amounts, colors, icons);
 
             ExpandableHeightGridView grid;
 
             View view = inflater.inflate(R.layout.categories, container, false);
+
+            new_item = view.findViewById(R.id.new_exclusive_list_item);
+            new_item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    FragmentManager fragmentManager = ((MainActivity) getContext()).getSupportFragmentManager();
+
+                    NewItemDialog newItemDialog = new NewItemDialog();
+                    newItemDialog.show(fragmentManager, "New Item");
+                }
+            });
 
             grid = (ExpandableHeightGridView) view.findViewById(R.id.grid_usual);
             grid.setAdapter(adapter);
