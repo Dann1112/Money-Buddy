@@ -3,6 +3,7 @@ package com.manrique.daniel.moneybuddy;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ public class CategoryItemsListFragment extends Fragment {
     ImageView iconHeader;
     private int color;
     private String description;
-    private int icon;
+    private View new_item;
 
 
     public CategoryItemsListFragment() {
@@ -38,6 +39,18 @@ public class CategoryItemsListFragment extends Fragment {
         layout = view.findViewById(R.id.item_list_header);
         descTxt = (TextView) view.findViewById(R.id.description_header);
         iconHeader = (ImageView) view.findViewById(R.id.header_icon);
+        new_item = view.findViewById(R.id.add_new_item);
+
+        new_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentManager fragmentManager = ((MainActivity) getContext()).getSupportFragmentManager();
+
+                NewItemDialog newItemDialog = new NewItemDialog();
+                newItemDialog.show(fragmentManager, "New Item");
+            }
+        });
 
         color = getArguments().getInt("color", 0);
         description = getArguments().getString("description", "Default");
