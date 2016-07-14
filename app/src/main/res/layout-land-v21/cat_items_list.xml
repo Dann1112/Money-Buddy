@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Toolbar-->
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/cancel_action"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/cancel_new_cat"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            style="@style/TextInToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/cancel_action"
+            android:text="@string/app_name" />
+
+    </RelativeLayout>
+
+    <!--Category Header-->
+    <RelativeLayout
+        android:id="@+id/item_list_header"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/header_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/cat_name"
+            android:src="@drawable/income" />
+
+        <TextView
+            android:id="@+id/description_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header_icon"
+            android:layout_centerHorizontal="true"
+            android:text="@string/default_item_name"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_large" />
+
+    </RelativeLayout>
+
+    <!--Items List-->
+    <ListView
+        android:id="@+id/items_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_toEndOf="@id/item_list_header"
+
+        >
+
+
+    </ListView>
+
+    <!--New Item Button-->
+    <RelativeLayout
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/items_listview"
+        android:layout_toEndOf="@id/item_list_header"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp">
+
+        <ImageView
+            android:id="@+id/add_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:contentDescription="@string/add_new_item"
+            android:src="@drawable/add" />
+
+        <TextView
+            android:id="@+id/add_new_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/add_icon"
+            android:layout_toRightOf="@id/add_icon"
+            android:text="@string/add_new_item"
+            android:textSize="@dimen/text_size_xsmall" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
