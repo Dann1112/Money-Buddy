@@ -3,31 +3,32 @@
     android:layout_height="match_parent">
 
     <!--Toolbar-->
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/colorPrimary"
-        android:elevation="4dp"
-        android:gravity="center_vertical"
-        android:padding="16dp">
-
-        <ImageView
-            android:id="@+id/cancel_action"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/cancel_new_cat"
-            android:src="@mipmap/ic_launcher" />
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
         <TextView
-            style="@style/TextInToolbar"
-            android:layout_width="wrap_content"
+            android:id="@+id/date"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
-            android:layout_toEndOf="@id/cancel_action"
-            android:text="@string/app_name" />
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:maxEms="40"
+            android:text="@string/default_date"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_xxsmall"
+            android:textStyle="bold" />
 
-    </RelativeLayout>
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/edit" />
+
+    </LinearLayout>
 
     <!--Category Header-->
     <RelativeLayout
