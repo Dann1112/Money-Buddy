@@ -83,7 +83,6 @@
                 android:layout_height="36dp"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
-                android:enabled="false"
                 android:padding="8dp"
                 android:text="@string/confirm_new_item"
                 android:textColor="@color/colorPrimary" />

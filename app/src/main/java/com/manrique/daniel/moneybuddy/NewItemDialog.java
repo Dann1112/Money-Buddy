@@ -41,13 +41,51 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
+
         if (view == confirmBtn) {
-            Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
-            dismiss();
+            if (validate(descriptionEdTxt, amountEdTxt)) {
+                Toast.makeText(getContext(), descriptionEdTxt.getText(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), amountEdTxt.getText(), Toast.LENGTH_SHORT).show();
+                dismiss();
+            }
+
         } else if (view == cancelBtn) {
             Toast.makeText(getContext(), "Cancel", Toast.LENGTH_SHORT).show();
             dismiss();
         }
+    }
+
+    private boolean validate(EditText desc, EditText amount) {
+        String text;
+        int decimal = 0;
+        if (desc != null) {
+            text = String.valueOf(desc.getText());
+
+            if (text.equals("") || text.isEmpty()) {
+                Toast.makeText(getContext(), "Set the description", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            for (char c : text.toCharArray()) {
+                if (!Character.isLetterOrDigit(c)) {
+                    Toast.makeText(getContext(), "Only letters or numbers for description", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
+
+            text = String.valueOf(amount.getText());
+
+            if (text.equals("") || text.isEmpty()) {
+                Toast.makeText(getContext(), "Set the amount", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+
+            return true;
+
+        } else
+            return false;
+
     }
 
 
