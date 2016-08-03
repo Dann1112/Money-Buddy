@@ -21,7 +21,7 @@
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/cancel_new_cat"
-                android:src="@drawable/add" />
+                android:src="@drawable/clear" />
 
             <TextView
                 android:id="@id/new_category_title"
@@ -48,15 +48,17 @@
         </RelativeLayout>
 
         <TextView
+            style="@style/TextSecondaryColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/new_category_description"
-            android:textSize="@dimen/text_size_small" />
+            android:textSize="@dimen/text_size_xsmall" />
 
         <EditText
+            style="@style/TextHintColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -64,7 +66,7 @@
             android:layout_marginTop="8dp"
             android:hint="@string/cat_name"
             android:inputType="textCapWords"
-            android:textSize="@dimen/text_size_medium" />
+            android:textSize="@dimen/text_size_xsmall" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -75,12 +77,14 @@
 
             <TextView
                 android:id="@+id/icon_text_view"
+                style="@style/TextSecondaryColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/new_category_icon"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/text_size_xsmall" />
 
             <Spinner
+                style="@style/TextPrimaryColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -109,13 +113,14 @@
 
         <TextView
             android:id="@+id/color_text_view"
+            style="@style/TextSecondaryColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="20dp"
             android:text="@string/new_category_color"
-            android:textSize="@dimen/text_size_small" />
+            android:textSize="@dimen/text_size_xsmall" />
 
         <GridView
             android:id="@+id/grid_colors"

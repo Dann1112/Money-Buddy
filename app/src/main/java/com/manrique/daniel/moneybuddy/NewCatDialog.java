@@ -8,23 +8,46 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-public class NewCatDialog extends Fragment {
+public class NewCatDialog extends Fragment implements View.OnClickListener {
+
+    ImageView cancel;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        GridView colorGrid;
+        final GridView colorGrid;
 
         View view = inflater.inflate(R.layout.new_category, null);
         colorGrid = (GridView) view.findViewById(R.id.grid_colors);
         colorGrid.setAdapter(new ColorAdapter(this.getContext()));
 
+
+        colorGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                ColorAdapter myAdapter = (ColorAdapter) colorGrid.getAdapter();
+                myAdapter.selectedItem = position;
+                myAdapter.notifyDataSetChanged();
+            }
+        });
+
+        cancel = (ImageView) view.findViewById(R.id.cancel_action);
+        cancel.setOnClickListener(this);
+
+
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == cancel) {
+            getFragmentManager().popBackStackImmediate();
+        }
     }
 
 
@@ -44,6 +67,7 @@ public class NewCatDialog extends Fragment {
         Context mContext;
         String[] colors = {red, pink, purple, deep_purple, blue, teal, green,
                 yellow, orange, grey};
+        private int selectedItem = 0;
 
         ColorAdapter(Context context) {
             mContext = context;
@@ -73,10 +97,16 @@ public class NewCatDialog extends Fragment {
 
                 color = new ImageView(mContext);
                 color.setLayoutParams(new GridView.LayoutParams(100, 100));
+                color.setPadding(20, 20, 20, 20);
             } else
                 color = (ImageView) view;
 
             color.setBackgroundColor(Color.parseColor(colors[i]));
+            if (i == selectedItem) {
+                color.setImageResource(R.drawable.ok);
+            } else
+                color.setImageResource(0);
+
             return color;
 
         }

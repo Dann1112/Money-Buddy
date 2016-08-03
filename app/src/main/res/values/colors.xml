@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF9800</color>
 
+    <color name="hint">#bfbfbf</color>
+
     <color name="expense">#FFAB91</color>
     <color name="balance">#80D8FF</color>
 
