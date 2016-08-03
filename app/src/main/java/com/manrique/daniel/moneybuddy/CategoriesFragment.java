@@ -48,7 +48,10 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
 
                     FragmentManager fragmentManager = ((MainActivity) getContext()).getSupportFragmentManager();
 
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("origin", 3);
                     NewItemDialog newItemDialog = new NewItemDialog();
+                    newItemDialog.setArguments(bundle);
                     newItemDialog.show(fragmentManager, "New Item");
                 }
             });

@@ -67,7 +67,7 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
         Context mContext;
         String[] colors = {red, pink, purple, deep_purple, blue, teal, green,
                 yellow, orange, grey};
-        private int selectedItem = 0;
+        private int selectedItem = -1;
 
         ColorAdapter(Context context) {
             mContext = context;
