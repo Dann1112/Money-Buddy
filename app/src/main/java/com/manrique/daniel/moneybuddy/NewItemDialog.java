@@ -19,14 +19,15 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
 
 
     public NewItemDialog() {
-        bundle = this.getArguments();
-        origin = bundle.getInt("origin");
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        bundle = this.getArguments();
+        origin = bundle.getInt("origin");
 
         View view = inflater.inflate(R.layout.new_item_dialog, null);
         confirmBtn = (Button) view.findViewById(R.id.confirm_new_item_button);
@@ -50,6 +51,9 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
 
                 //AQUI SE CARGA INFORMACION A BASE DE DATOS DEPENDIENDO DEL VALOR
                 //QUE TENGA origin, PARA SABER EN QUE TABLA SE VA A GUARDAR
+                // 1 = NEW_INCOME    2 = NEW_EXPENSE
+                Toast.makeText(getContext(), "DATA TO DATABASE " + origin, Toast.LENGTH_SHORT).show();
+
 
                 dismiss();
             }
