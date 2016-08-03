@@ -24,7 +24,7 @@
                 android:src="@drawable/clear" />
 
             <TextView
-                android:id="@id/new_category_title"
+                android:id="@+id/new_category_title"
                 style="@style/TextInToolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -80,10 +80,12 @@
                 style="@style/TextSecondaryColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:text="@string/new_category_icon"
                 android:textSize="@dimen/text_size_xsmall" />
 
             <Spinner
+                android:id="@+id/spinner"
                 style="@style/TextPrimaryColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,6 +93,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/icon_text_view"
                 android:layout_toRightOf="@id/icon_text_view"
+                android:gravity="center"
                 android:isScrollContainer="true">
 
             </Spinner>

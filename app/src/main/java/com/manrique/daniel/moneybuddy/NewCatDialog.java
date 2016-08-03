@@ -9,13 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 public class NewCatDialog extends Fragment implements View.OnClickListener {
 
+    private final String[] categories = {"People", "Transport", "Places", "Activities", "Others"};
     ImageView cancel;
+    Spinner spinner;
 
     @Nullable
     @Override
@@ -24,6 +28,12 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
         final GridView colorGrid;
 
         View view = inflater.inflate(R.layout.new_category, null);
+        spinner = (Spinner) view.findViewById(R.id.spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
         colorGrid = (GridView) view.findViewById(R.id.grid_colors);
         colorGrid.setAdapter(new ColorAdapter(this.getContext()));
 
