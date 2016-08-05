@@ -11,27 +11,67 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class NewCatDialog extends Fragment implements View.OnClickListener {
 
     private final String[] categories = {"People", "Transportation", "Places", "Activities", "Others"};
     ImageView cancel;
+    TextView createButton;
+    EditText categoryNameBox;
     Spinner spinner;
+    View view;
+    GridView colorGrid;
+    ExpandableHeightGridView iconGrid;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        final GridView colorGrid;
-        final ExpandableHeightGridView iconGrid;
 
-        final Context context = this.getContext();
-
-        View view = inflater.inflate(R.layout.new_category, null);
+        view = inflater.inflate(R.layout.new_category, null);
         spinner = (Spinner) view.findViewById(R.id.spinner);
+        createButton = (TextView) view.findViewById(R.id.create);
+        categoryNameBox = (EditText) view.findViewById(R.id.category_name_box);
+
+
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String catName, iconSelected;
+
+
+                if (Validation.validateAlpha(getContext(), categoryNameBox, "Category Name")) {
+
+                    catName = String.valueOf(categoryNameBox.getText());
+                    Toast.makeText(getContext(), catName, Toast.LENGTH_SHORT).show();
+
+                    if (!validateIconSelected().equals("default")) {
+                        iconSelected = validateIconSelected();
+                        Toast.makeText(getContext(), iconSelected, Toast.LENGTH_SHORT).show();
+                    } else return;
+
+
+                } else return;
+
+
+                //colorSelected = validateColorSelected();
+
+
+                //Toast.makeText(getContext(), colorSelected, Toast.LENGTH_SHORT).show();
+
+                //AQUI SE ENVIA LA INFORMACION DE LA NUEVA CATEGORIA
+                //TITULO DE LA CATEGORIA = STRING
+                //ICONO = STRING
+                //COLOR = STRING
+            }
+        });
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -56,6 +96,7 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
 
                 IconAdapter myAdapter = (IconAdapter) iconGrid.getAdapter();
                 myAdapter.cat = i;
+                myAdapter.selectedItem = -1;
                 myAdapter.notifyDataSetChanged();
             }
 
@@ -87,6 +128,17 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
 
 
         return view;
+    }
+
+    private String validateIconSelected() {
+
+        IconAdapter myAdapter = (IconAdapter) iconGrid.getAdapter();
+        if (myAdapter.getItem(myAdapter.selectedItem) != null && myAdapter.selectedItem > -1)
+            return (String) myAdapter.getItem(myAdapter.selectedItem);
+        else {
+            Toast.makeText(getContext(), "Select an Icon " + myAdapter.selectedItem, Toast.LENGTH_SHORT).show();
+            return "default";
+        }
     }
 
     @Override
@@ -158,128 +210,7 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
         }
     }
 
-    private class IconAdapter extends BaseAdapter {
 
-
-        private final int[] people = {
-                R.drawable.accesibility, R.drawable.baby, R.drawable.circle_person,
-                R.drawable.person, R.drawable.run, R.drawable.face, R.drawable.heart,
-                R.drawable.fingerprint, R.drawable.group, R.drawable.bad, R.drawable.good,
-                R.drawable.nature, R.drawable.hand, R.drawable.pool, R.drawable.eye,
-                R.drawable.pregnant};
-        private final int[] transportation = {
-                R.drawable.airplane, R.drawable.truck, R.drawable.truck1, R.drawable.bike,
-                R.drawable.boat, R.drawable.bus, R.drawable.train, R.drawable.run,
-                R.drawable.subway, R.drawable.taxi};
-        private final int[] places = {
-                R.drawable.bank, R.drawable.beach, R.drawable.seat, R.drawable.gym, R.drawable.gavel,
-                R.drawable.healing, R.drawable.home, R.drawable.hotel, R.drawable.landscape,
-                R.drawable.bar, R.drawable.restaurant, R.drawable.gas, R.drawable.library,
-                R.drawable.parking, R.drawable.nature, R.drawable.pool, R.drawable.world,
-                R.drawable.place, R.drawable.school, R.drawable.eshop, R.drawable.shopping,
-                R.drawable.shopping1, R.drawable.store, R.drawable.movies, R.drawable.work};
-        private final int[] activities = {
-                R.drawable.brush, R.drawable.camera, R.drawable.tools, R.drawable.run,
-                R.drawable.puzzle, R.drawable.flower, R.drawable.gamepad, R.drawable.golf,
-                R.drawable.book, R.drawable.landscape, R.drawable.bar, R.drawable.cafe,
-                R.drawable.restaurant, R.drawable.library, R.drawable.nature, R.drawable.art,
-                R.drawable.pets, R.drawable.pool, R.drawable.chat, R.drawable.row, R.drawable.voice,
-                R.drawable.shopping, R.drawable.shopping1, R.drawable.smoke, R.drawable.videocam,
-                R.drawable.vg, R.drawable.couch, R.drawable.work};
-        private final int[] others = {
-                R.drawable.bookmark, R.drawable.bug, R.drawable.cake, R.drawable.call, R.drawable.clock,
-                R.drawable.cloud, R.drawable.currency, R.drawable.file, R.drawable.moon,
-                R.drawable.refresh, R.drawable.task, R.drawable.wallet, R.drawable.laptop,
-                R.drawable.watch, R.drawable.scissors, R.drawable.credit_card, R.drawable.trash,
-                R.drawable.desktop, R.drawable.dial, R.drawable.dns, R.drawable.email, R.drawable.seat,
-                R.drawable.compass, R.drawable.puzzle, R.drawable.flower, R.drawable.streak,
-                R.drawable.star, R.drawable.headset, R.drawable.lock, R.drawable.book, R.drawable.drop,
-                R.drawable.keyboard, R.drawable.kitchen, R.drawable.bulbe, R.drawable.ticket,
-                R.drawable.cafe, R.drawable.bar, R.drawable.car_wash, R.drawable.pizza, R.drawable.bell,
-                R.drawable.pets, R.drawable.printer, R.drawable.room_service, R.drawable.voice,
-                R.drawable.eshop, R.drawable.smoke, R.drawable.speaker, R.drawable.mobile,
-                R.drawable.traffic, R.drawable.translate, R.drawable.usb, R.drawable.videocam,
-                R.drawable.vg, R.drawable.volume, R.drawable.watch, R.drawable.bulbe1,
-                R.drawable.couch, R.drawable.fire};
-        public int cat;
-        private Context context;
-        private int selectedItem = -1;
-
-        IconAdapter(Context context, int spinnerChoice) {
-
-            this.context = context;
-            cat = spinnerChoice;
-        }
-
-        @Override
-        public int getCount() {
-            switch (cat) {
-                case 0:
-                    return people.length;
-                case 1:
-                    return transportation.length;
-                case 2:
-                    return places.length;
-                case 3:
-                    return activities.length;
-                case 4:
-                    return others.length;
-                default:
-                    return 0;
-            }
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-
-            ImageView icon;
-
-            if (view == null) {
-
-                icon = new ImageView(context);
-                icon.setLayoutParams(new GridView.LayoutParams(100, 100));
-                icon.setPadding(10, 10, 10, 10);
-            } else
-                icon = (ImageView) view;
-
-            switch (cat) {
-                case 0:
-                    icon.setImageResource(people[i]);
-                    break;
-                case 1:
-                    icon.setImageResource(transportation[i]);
-                    break;
-                case 2:
-                    icon.setImageResource(places[i]);
-                    break;
-                case 3:
-                    icon.setImageResource(activities[i]);
-                    break;
-                case 4:
-                    icon.setImageResource(others[i]);
-                    break;
-            }
-
-            if (i == selectedItem) {
-                icon.setAlpha(255);
-            } else
-                icon.setAlpha(50);
-
-            return icon;
-
-        }
-    }
-
-    }
+}
 
 

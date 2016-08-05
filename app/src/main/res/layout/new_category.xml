@@ -14,13 +14,16 @@
             android:background="@color/colorPrimary"
             android:elevation="4dp"
             android:gravity="center_vertical"
-            android:padding="16dp">
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
 
             <ImageView
                 android:id="@+id/cancel_action"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/cancel_new_cat"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
                 android:src="@drawable/clear" />
 
             <TextView
@@ -36,12 +39,15 @@
                 android:text="@string/new_category_title" />
 
             <TextView
+                android:id="@+id/create"
                 style="@style/TextInToolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:gravity="center_vertical"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
                 android:text="@string/create" />
 
 
@@ -58,6 +64,7 @@
             android:textSize="@dimen/text_size_xsmall" />
 
         <EditText
+            android:id="@+id/category_name_box"
             style="@style/TextHintColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

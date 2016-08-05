@@ -47,13 +47,13 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
     public void onClick(View view) {
 
         if (view == confirmBtn) {
-            if (validate(descriptionEdTxt, amountEdTxt)) {
+            if (Validation.validateAlpha(getContext(), descriptionEdTxt, "Item Name") &&
+                    Validation.validateNumber(getContext(), amountEdTxt, "Amount")) {
 
                 //AQUI SE CARGA INFORMACION A BASE DE DATOS DEPENDIENDO DEL VALOR
                 //QUE TENGA origin, PARA SABER EN QUE TABLA SE VA A GUARDAR
                 // 1 = NEW_INCOME    2 = NEW_EXPENSE
                 Toast.makeText(getContext(), "DATA TO DATABASE " + origin, Toast.LENGTH_SHORT).show();
-
 
                 dismiss();
             }
