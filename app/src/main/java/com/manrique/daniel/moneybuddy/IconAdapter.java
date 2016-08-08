@@ -68,10 +68,6 @@ public class IconAdapter extends BaseAdapter {
         cat = spinnerChoice;
     }
 
-    public int getCat() {
-        return cat;
-    }
-
     @Override
     public int getCount() {
         switch (cat) {

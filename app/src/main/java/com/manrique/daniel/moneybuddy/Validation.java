@@ -4,9 +4,6 @@ import android.content.Context;
 import android.widget.EditText;
 import android.widget.Toast;
 
-/**
- * Created by Dann on 05/08/2016.
- */
 public class Validation {
 
     public static boolean validateAlpha(Context context, EditText box, String boxDescription) {

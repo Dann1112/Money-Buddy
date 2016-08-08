@@ -1,7 +1,5 @@
 package com.manrique.daniel.moneybuddy;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -36,42 +33,14 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
 
         view = inflater.inflate(R.layout.new_category, null);
         spinner = (Spinner) view.findViewById(R.id.spinner);
-        createButton = (TextView) view.findViewById(R.id.create);
+
         categoryNameBox = (EditText) view.findViewById(R.id.category_name_box);
 
+        createButton = (TextView) view.findViewById(R.id.create);
+        createButton.setOnClickListener(this);
+        cancel = (ImageView) view.findViewById(R.id.cancel_action);
+        cancel.setOnClickListener(this);
 
-        createButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String catName, iconSelected;
-
-
-                if (Validation.validateAlpha(getContext(), categoryNameBox, "Category Name")) {
-
-                    catName = String.valueOf(categoryNameBox.getText());
-                    Toast.makeText(getContext(), catName, Toast.LENGTH_SHORT).show();
-
-                    if (!validateIconSelected().equals("default")) {
-                        iconSelected = validateIconSelected();
-                        Toast.makeText(getContext(), iconSelected, Toast.LENGTH_SHORT).show();
-                    } else return;
-
-
-                } else return;
-
-
-                //colorSelected = validateColorSelected();
-
-
-                //Toast.makeText(getContext(), colorSelected, Toast.LENGTH_SHORT).show();
-
-                //AQUI SE ENVIA LA INFORMACION DE LA NUEVA CATEGORIA
-                //TITULO DE LA CATEGORIA = STRING
-                //ICONO = STRING
-                //COLOR = STRING
-            }
-        });
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -123,8 +92,7 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
             }
         });
 
-        cancel = (ImageView) view.findViewById(R.id.cancel_action);
-        cancel.setOnClickListener(this);
+
 
 
         return view;
@@ -136,7 +104,18 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
         if (myAdapter.getItem(myAdapter.selectedItem) != null && myAdapter.selectedItem > -1)
             return (String) myAdapter.getItem(myAdapter.selectedItem);
         else {
-            Toast.makeText(getContext(), "Select an Icon " + myAdapter.selectedItem, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Select an Icon", Toast.LENGTH_SHORT).show();
+            return "default";
+        }
+    }
+
+    private String validateColorSelected() {
+
+        ColorAdapter myAdapter = (ColorAdapter) colorGrid.getAdapter();
+        if (myAdapter.getItem(myAdapter.selectedItem) != null && myAdapter.selectedItem > -1)
+            return (String) myAdapter.getItem(myAdapter.selectedItem);
+        else {
+            Toast.makeText(getContext(), "Select a Color", Toast.LENGTH_SHORT).show();
             return "default";
         }
     }
@@ -145,70 +124,36 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         if (view == cancel) {
             getFragmentManager().popBackStackImmediate();
+        } else if (view == createButton) {
+            String catName, iconSelected, colorSelected;
+
+
+            if (Validation.validateAlpha(getContext(), categoryNameBox, "Category Name")) {
+
+                catName = String.valueOf(categoryNameBox.getText());
+                Toast.makeText(getContext(), catName, Toast.LENGTH_SHORT).show();
+
+                if (!validateIconSelected().equals("default")) {
+                    iconSelected = validateIconSelected();
+                    Toast.makeText(getContext(), iconSelected, Toast.LENGTH_SHORT).show();
+
+                    if (!validateColorSelected().equals("default")) {
+                        colorSelected = validateColorSelected();
+                        Toast.makeText(getContext(), colorSelected, Toast.LENGTH_SHORT).show();
+                        getFragmentManager().popBackStack();
+
+                    } else return;
+
+
+                } else return;
+
+
+            } else return;
         }
     }
 
 
-    private class ColorAdapter extends BaseAdapter {
 
-        //Colors from Google Material Design ( A200 Colors )
-        private final String red = "#FF5252";
-        private final String pink = "#FF4081";
-        private final String purple = "#E040FB";
-        private final String deep_purple = "#7C4DFF";
-        private final String blue = "#448AFF";
-        private final String teal = "#64FFDA";
-        private final String green = "#B2FF59";
-        private final String yellow = "#FFFF00";
-        private final String orange = "#FFAB40";
-        private final String grey = "#E0E0E0"; //Grey 300
-        Context mContext;
-        String[] colors = {red, pink, purple, deep_purple, blue, teal, green,
-                yellow, orange, grey};
-        private int selectedItem = -1;
-
-        ColorAdapter(Context context) {
-            mContext = context;
-        }
-
-        @Override
-        public int getCount() {
-            return colors.length;
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-
-            ImageView color;
-
-            if (view == null) {
-
-                color = new ImageView(mContext);
-                color.setLayoutParams(new GridView.LayoutParams(100, 100));
-                color.setPadding(20, 20, 20, 20);
-            } else
-                color = (ImageView) view;
-
-            color.setBackgroundColor(Color.parseColor(colors[i]));
-            if (i == selectedItem) {
-                color.setImageResource(R.drawable.ok);
-            } else
-                color.setImageResource(0);
-
-            return color;
-
-        }
-    }
 
 
 }
