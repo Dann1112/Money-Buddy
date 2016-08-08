@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,7 +22,7 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
     EditText categoryNameBox;
     Spinner spinner;
     View view;
-    GridView colorGrid;
+    ExpandableHeightGridView colorGrid;
     ExpandableHeightGridView iconGrid;
 
     @Nullable
@@ -55,8 +54,9 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
         iconGrid.setAdapter(iconAdapter);
         iconGrid.setExpanded(true);
 
-        colorGrid = (GridView) view.findViewById(R.id.grid_colors);
+        colorGrid = (ExpandableHeightGridView) view.findViewById(R.id.grid_colors);
         colorGrid.setAdapter(new ColorAdapter(this.getContext()));
+        colorGrid.setExpanded(true);
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -130,7 +130,7 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
 
             if (Validation.validateAlpha(getContext(), categoryNameBox, "Category Name")) {
 
-                catName = String.valueOf(categoryNameBox.getText());
+                catName = String.valueOf(categoryNameBox.getText()).trim();
                 Toast.makeText(getContext(), catName, Toast.LENGTH_SHORT).show();
 
                 if (!validateIconSelected().equals("default")) {

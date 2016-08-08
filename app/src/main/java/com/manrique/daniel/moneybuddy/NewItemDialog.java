@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class NewItemDialog extends DialogFragment implements View.OnClickListener {
 
-    private Bundle bundle;
+
     private int origin;
     private Button cancelBtn, confirmBtn;
     private EditText descriptionEdTxt, amountEdTxt;
@@ -25,6 +25,8 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        Bundle bundle;
 
         bundle = this.getArguments();
         origin = bundle.getInt("origin");
@@ -50,10 +52,12 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
             if (Validation.validateAlpha(getContext(), descriptionEdTxt, "Item Name") &&
                     Validation.validateNumber(getContext(), amountEdTxt, "Amount")) {
 
+                //.trim()
+
                 //AQUI SE CARGA INFORMACION A BASE DE DATOS DEPENDIENDO DEL VALOR
                 //QUE TENGA origin, PARA SABER EN QUE TABLA SE VA A GUARDAR
                 // 1 = NEW_INCOME    2 = NEW_EXPENSE
-                Toast.makeText(getContext(), "DATA TO DATABASE " + origin, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "DATA TO DATABASE " + /*origin*/ "1", Toast.LENGTH_SHORT).show();
 
                 dismiss();
             }
@@ -62,39 +66,5 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
             dismiss();
         }
     }
-
-    private boolean validate(EditText desc, EditText amount) {
-        String text;
-        int decimal = 0;
-        if (desc != null) {
-            text = String.valueOf(desc.getText());
-
-            if (text.equals("") || text.isEmpty()) {
-                Toast.makeText(getContext(), "Set the description", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-
-            for (char c : text.toCharArray()) {
-                if (!Character.isLetterOrDigit(c)) {
-                    Toast.makeText(getContext(), "Only letters or numbers for description", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            }
-
-            text = String.valueOf(amount.getText());
-
-            if (text.equals("") || text.isEmpty()) {
-                Toast.makeText(getContext(), "Set the amount", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-
-
-            return true;
-
-        } else
-            return false;
-
-    }
-
 
 }

@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 public class Validation {
 
+
     public static boolean validateAlpha(Context context, EditText box, String boxDescription) {
 
         //Variable where we are going to store what is inside the EditText
@@ -21,10 +22,10 @@ public class Validation {
                 return false;
             }
 
-            //If any character is not eiter a letter or a digit, is INVALID
+            //If any character is neither a letter nor a digit, is INVALID
             for (char c : text.toCharArray()) {
                 if (!Character.isLetterOrDigit(c)) {
-                    Toast.makeText(context, "Type only letters or numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Only letter or numbers for name", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             }
@@ -57,17 +58,17 @@ public class Validation {
             //If any character is not a digit or a decimal point, is INVALID
             for (char c : number.toCharArray()) {
 
-                if (!Character.isDigit(c) || !(String.valueOf(c).equals("."))) {
+                if (!Character.isDigit(c)) {
 
                     //If there is a decimal point, counter adds one
                     if (String.valueOf(c).equals(".")) decimal++;
                     //If there is more than a point, is INVALID
-                    if (decimal >= 1) {
+                    if (decimal > 1) {
                         Toast.makeText(context, "Only one decimal point", Toast.LENGTH_SHORT).show();
                         return false;
                     }
 
-                    Toast.makeText(context, "Type only letters or numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Only numbers for amount", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             }
