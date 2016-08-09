@@ -1,5 +1,7 @@
 package com.manrique.daniel.moneybuddy.UI;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 import com.manrique.daniel.moneybuddy.Adapters.ColorAdapter;
 import com.manrique.daniel.moneybuddy.Adapters.IconAdapter;
 import com.manrique.daniel.moneybuddy.CustomViews.ExpandableHeightGridView;
+import com.manrique.daniel.moneybuddy.Database.DatabaseContract;
+import com.manrique.daniel.moneybuddy.Database.DatabaseOpenHelper;
 import com.manrique.daniel.moneybuddy.R;
 import com.manrique.daniel.moneybuddy.Validation;
 
@@ -146,7 +150,22 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
                     if (!validateColorSelected().equals("default")) {
                         colorSelected = validateColorSelected();
                         Toast.makeText(getContext(), colorSelected, Toast.LENGTH_SHORT).show();
-                        getFragmentManager().popBackStack();
+
+
+                        SQLiteDatabase db = new DatabaseOpenHelper(this.getContext()).getWritableDatabase();
+                        ContentValues testValues = new ContentValues();
+                        testValues.put(DatabaseContract.Category.COLUMN_NAME_TITLE, catName);
+                        testValues.put(DatabaseContract.Category.COLUMN_NAME_ICON, iconSelected);
+                        testValues.put(DatabaseContract.Category.COLUMN_NAME_COLOR, colorSelected);
+
+                        try {
+                            db.insert(DatabaseContract.Category.TABLE_NAME, null, testValues);
+                            Toast.makeText(this.getContext(), "Nailed It", Toast.LENGTH_SHORT).show();
+                            getFragmentManager().popBackStack();
+                        } catch (Exception e) {
+                            Toast.makeText(this.getContext(), "Impossible", Toast.LENGTH_SHORT).show();
+                        }
+
 
                     } else return;
 

@@ -65,19 +65,22 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
             if (Validation.validateAlpha(getContext(), descriptionEdTxt, "Item Name") &&
                     Validation.validateNumber(getContext(), amountEdTxt, "Amount")) {
 
-                SQLiteDatabase db = new DatabaseOpenHelper(this.getContext()).getWritableDatabase();
-                ContentValues testValues = new ContentValues();
-                testValues.put(DatabaseContract.Income.COLUMN_NAME_DATE, date);
-                testValues.put(DatabaseContract.Income.COLUMN_NAME_DESCRIPTION,
-                        String.valueOf(descriptionEdTxt.getText()));
-                testValues.put(DatabaseContract.Income.COLUMN_NAME_AMOUNT,
-                        String.valueOf(amountEdTxt.getText()));
+                if (origin == 1) {
 
-                try{
-                    db.insert(DatabaseContract.Income.TABLE_NAME, null, testValues);
-                    Toast.makeText(this.getContext(), "NAILED IT", Toast.LENGTH_SHORT).show();
-                } catch (Exception e){
-                    Toast.makeText(this.getContext(),"Impossible",Toast.LENGTH_SHORT).show();
+                    SQLiteDatabase db = new DatabaseOpenHelper(this.getContext()).getWritableDatabase();
+                    ContentValues testValues = new ContentValues();
+                    testValues.put(DatabaseContract.Income.COLUMN_NAME_DATE, date);
+                    testValues.put(DatabaseContract.Income.COLUMN_NAME_DESCRIPTION,
+                            String.valueOf(descriptionEdTxt.getText()));
+                    testValues.put(DatabaseContract.Income.COLUMN_NAME_AMOUNT,
+                            String.valueOf(amountEdTxt.getText()));
+
+                    try {
+                        db.insert(DatabaseContract.Income.TABLE_NAME, null, testValues);
+                    } catch (Exception e) {
+                        Toast.makeText(this.getContext(), "Couldn't insert to DB", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
 
