@@ -1,4 +1,4 @@
-package com.manrique.daniel.moneybuddy;
+package com.manrique.daniel.moneybuddy.CustomViews;
 
 import android.content.Context;
 import android.util.AttributeSet;

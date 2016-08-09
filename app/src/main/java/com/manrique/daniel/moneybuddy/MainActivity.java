@@ -5,6 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.manrique.daniel.moneybuddy.UI.CategoriesFragment;
+import com.manrique.daniel.moneybuddy.UI.MainMenuFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     FragmentManager manager = getSupportFragmentManager();

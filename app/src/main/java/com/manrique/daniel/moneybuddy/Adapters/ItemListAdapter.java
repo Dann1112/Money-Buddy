@@ -1,4 +1,4 @@
-package com.manrique.daniel.moneybuddy;
+package com.manrique.daniel.moneybuddy.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,26 +7,28 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.manrique.daniel.moneybuddy.R;
+
+import java.util.ArrayList;
+
 public class ItemListAdapter extends BaseAdapter {
 
-    private String[] itemName;
-    private String[] itemAmount;
+    private ArrayList<String> itemName;
+    private ArrayList<String> itemAmount;
     private int length;
     private Context context;
 
 
-    public ItemListAdapter(Context context, String[] itemName, String[] itemAmount, int length) {
+    public ItemListAdapter(Context context, ArrayList<String> itemName, ArrayList<String> itemAmount) {
 
         this.context = context;
         this.itemName = itemName;
         this.itemAmount = itemAmount;
-        this.length = length;
-
     }
 
     @Override
     public int getCount() {
-        return length;
+        return itemName.size();
     }
 
     @Override
@@ -57,8 +59,8 @@ public class ItemListAdapter extends BaseAdapter {
         itemNameView = (TextView) list_item.findViewById(R.id.item_name);
         itemAmountView = (TextView) list_item.findViewById(R.id.item_amount);
 
-        itemNameView.setText(itemName[i]);
-        itemAmountView.setText(itemAmount[i]);
+        itemNameView.setText(itemName.get(i));
+        itemAmountView.setText(itemAmount.get(i));
 
         return list_item;
 

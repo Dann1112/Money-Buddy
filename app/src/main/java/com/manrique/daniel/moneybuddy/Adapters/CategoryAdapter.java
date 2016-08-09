@@ -1,4 +1,4 @@
-package com.manrique.daniel.moneybuddy;
+package com.manrique.daniel.moneybuddy.Adapters;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -11,6 +11,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.manrique.daniel.moneybuddy.MainActivity;
+import com.manrique.daniel.moneybuddy.R;
+import com.manrique.daniel.moneybuddy.UI.ExpenseFragment;
+import com.manrique.daniel.moneybuddy.UI.NewCatDialog;
 
 public class CategoryAdapter extends BaseAdapter implements View.OnClickListener {
 
@@ -106,7 +111,7 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
         ImageView icon;
         TextView description;
 
-        CategoryItemsListFragment newFrag = new CategoryItemsListFragment();
+        ExpenseFragment newFrag = new ExpenseFragment();
         Bundle args = new Bundle();
         ColorDrawable background = (ColorDrawable) view.getBackground();
         description = (TextView) view.findViewById(R.id.category_name);

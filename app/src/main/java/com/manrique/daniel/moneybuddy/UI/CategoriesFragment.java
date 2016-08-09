@@ -1,4 +1,4 @@
-package com.manrique.daniel.moneybuddy;
+package com.manrique.daniel.moneybuddy.UI;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +7,11 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.manrique.daniel.moneybuddy.Adapters.CategoryAdapter;
+import com.manrique.daniel.moneybuddy.CustomViews.ExpandableHeightGridView;
+import com.manrique.daniel.moneybuddy.MainActivity;
+import com.manrique.daniel.moneybuddy.R;
 
 
 public class CategoriesFragment extends android.support.v4.app.Fragment {

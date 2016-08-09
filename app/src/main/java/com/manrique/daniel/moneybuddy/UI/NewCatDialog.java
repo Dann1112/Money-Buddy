@@ -1,4 +1,4 @@
-package com.manrique.daniel.moneybuddy;
+package com.manrique.daniel.moneybuddy.UI;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +13,12 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.manrique.daniel.moneybuddy.Adapters.ColorAdapter;
+import com.manrique.daniel.moneybuddy.Adapters.IconAdapter;
+import com.manrique.daniel.moneybuddy.CustomViews.ExpandableHeightGridView;
+import com.manrique.daniel.moneybuddy.R;
+import com.manrique.daniel.moneybuddy.Validation;
 
 public class NewCatDialog extends Fragment implements View.OnClickListener {
 

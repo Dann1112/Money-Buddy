@@ -1,4 +1,4 @@
-package com.manrique.daniel.moneybuddy;
+package com.manrique.daniel.moneybuddy.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import com.manrique.daniel.moneybuddy.R;
 
 public class ColorAdapter extends BaseAdapter {
 
@@ -26,7 +28,7 @@ public class ColorAdapter extends BaseAdapter {
     String[] colors = {red, pink, purple, deep_purple, blue, teal, green,
             yellow, orange, grey};
 
-    ColorAdapter(Context context) {
+    public ColorAdapter(Context context) {
         mContext = context;
     }
 

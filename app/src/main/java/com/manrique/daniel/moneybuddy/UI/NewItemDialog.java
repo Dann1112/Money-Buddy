@@ -1,5 +1,7 @@
-package com.manrique.daniel.moneybuddy;
+package com.manrique.daniel.moneybuddy.UI;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -9,6 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.manrique.daniel.moneybuddy.Database.DatabaseContract;
+import com.manrique.daniel.moneybuddy.Database.DatabaseOpenHelper;
+import com.manrique.daniel.moneybuddy.R;
+import com.manrique.daniel.moneybuddy.Validation;
 
 public class NewItemDialog extends DialogFragment implements View.OnClickListener {
 
@@ -41,6 +48,9 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
         confirmBtn.setOnClickListener(this);
         cancelBtn.setOnClickListener(this);
 
+
+
+
         return view;
     }
 
@@ -52,13 +62,25 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
             if (Validation.validateAlpha(getContext(), descriptionEdTxt, "Item Name") &&
                     Validation.validateNumber(getContext(), amountEdTxt, "Amount")) {
 
-                //.trim()
+                SQLiteDatabase db = new DatabaseOpenHelper(this.getContext()).getWritableDatabase();
+                ContentValues testValues = new ContentValues();
+                testValues.put(DatabaseContract.Income.COLUMN_NAME_DATE,10);
+                testValues.put(DatabaseContract.Income.COLUMN_NAME_DESCRIPTION,
+                        String.valueOf(descriptionEdTxt.getText()));
+                testValues.put(DatabaseContract.Income.COLUMN_NAME_AMOUNT,
+                        String.valueOf(amountEdTxt.getText()));
+
+                try{
+                    db.insert(DatabaseContract.Income.TABLE_NAME, null, testValues);
+                    Toast.makeText(this.getContext(), "NAILED IT", Toast.LENGTH_SHORT).show();
+                } catch (Exception e){
+                    Toast.makeText(this.getContext(),"Impossible",Toast.LENGTH_SHORT).show();
+                }
+
 
                 //AQUI SE CARGA INFORMACION A BASE DE DATOS DEPENDIENDO DEL VALOR
                 //QUE TENGA origin, PARA SABER EN QUE TABLA SE VA A GUARDAR
                 // 1 = NEW_INCOME    2 = NEW_EXPENSE
-                Toast.makeText(getContext(), "DATA TO DATABASE " + /*origin*/ "1", Toast.LENGTH_SHORT).show();
-
                 dismiss();
             }
 

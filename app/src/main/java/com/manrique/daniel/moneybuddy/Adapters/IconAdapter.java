@@ -1,4 +1,4 @@
-package com.manrique.daniel.moneybuddy;
+package com.manrique.daniel.moneybuddy.Adapters;
 
 import android.content.Context;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import com.manrique.daniel.moneybuddy.R;
 
 /**
  * Created by Dann on 05/08/2016.
@@ -62,7 +64,7 @@ public class IconAdapter extends BaseAdapter {
     public int selectedItem = -1;
     private Context context;
 
-    IconAdapter(Context context, int spinnerChoice) {
+    public IconAdapter(Context context, int spinnerChoice) {
 
         this.context = context;
         cat = spinnerChoice;
