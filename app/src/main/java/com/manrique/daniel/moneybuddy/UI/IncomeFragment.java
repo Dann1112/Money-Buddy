@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.manrique.daniel.moneybuddy.Adapters.ItemListAdapter;
 import com.manrique.daniel.moneybuddy.Database.DatabaseContract;
@@ -29,11 +30,33 @@ public class IncomeFragment extends Fragment {
         SQLiteDatabase db;
         Cursor incomeCursor;
         ItemListAdapter incomeAdapter;
+        TextView dateView;
+        final StringBuilder date = new StringBuilder();
+        String day, month, monthNumber, year;
+
+
+        day = this.getArguments().getString("day");
+        month = this.getArguments().getString("month");
+        monthNumber = this.getArguments().getString("monthNumber");
+        year = this.getArguments().getString("year");
+
+        month = month.substring(0, 1).toUpperCase() + month.substring(1);
+        //monthNumber sirve para la base de datos
+
+        date.append(month).append(" ")
+                .append(day).append(", ")
+                .append(year);
 
         ArrayList<String> descriptions;
         ArrayList<String> amounts;
 
         view = inflater.inflate(R.layout.income_list, container, false);
+        dateView = (TextView) view.findViewById(R.id.date);
+
+        dateView.setText(date);
+
+        date.setLength(0);
+        date.append(day).append(monthNumber).append(year);
 
         incomeList = (ListView) view.findViewById(R.id.income_listview);
 
@@ -83,6 +106,7 @@ public class IncomeFragment extends Fragment {
                 FragmentManager fragmentManager = ((MainActivity) getContext()).getSupportFragmentManager();
 
                 Bundle bundle = new Bundle();
+                bundle.putString("date", String.valueOf(date));
                 bundle.putInt("origin", 1);
                 NewItemDialog newItemDialog = new NewItemDialog();
                 newItemDialog.setArguments(bundle);

@@ -23,6 +23,7 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
     private int origin;
     private Button cancelBtn, confirmBtn;
     private EditText descriptionEdTxt, amountEdTxt;
+    private String date;
 
 
     public NewItemDialog() {
@@ -35,8 +36,10 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
 
         Bundle bundle;
 
+
         bundle = this.getArguments();
         origin = bundle.getInt("origin");
+        date = bundle.getString("date");
 
         View view = inflater.inflate(R.layout.new_item_dialog, null);
         confirmBtn = (Button) view.findViewById(R.id.confirm_new_item_button);
@@ -64,7 +67,7 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
 
                 SQLiteDatabase db = new DatabaseOpenHelper(this.getContext()).getWritableDatabase();
                 ContentValues testValues = new ContentValues();
-                testValues.put(DatabaseContract.Income.COLUMN_NAME_DATE,10);
+                testValues.put(DatabaseContract.Income.COLUMN_NAME_DATE, date);
                 testValues.put(DatabaseContract.Income.COLUMN_NAME_DESCRIPTION,
                         String.valueOf(descriptionEdTxt.getText()));
                 testValues.put(DatabaseContract.Income.COLUMN_NAME_AMOUNT,

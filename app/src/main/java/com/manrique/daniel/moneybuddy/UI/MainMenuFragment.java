@@ -45,13 +45,28 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
     @Override
     public void onClick(View view) {
 
+        IncomeFragment incomeFragment = new IncomeFragment();
+        CategoriesFragment categoriesFragment = new CategoriesFragment();
+        Bundle args = new Bundle();
+        args.putString("day",
+                new SimpleDateFormat("dd", Locale.getDefault()).format(new Date()));
+        args.putString("month",
+                new SimpleDateFormat("MMMM", Locale.getDefault()).format(new Date()));
+        args.putString("year",
+                new SimpleDateFormat("yyyy", Locale.getDefault()).format(new Date()));
+        args.putString("monthNumber",
+                new SimpleDateFormat("MM", Locale.getDefault()).format(new Date()));
+
+        incomeFragment.setArguments(args);
+        categoriesFragment.setArguments(args);
+
         if (view == income_btn) {
             getFragmentManager().beginTransaction()
-                    .replace(R.id.mainFrame, new IncomeFragment())
+                    .replace(R.id.mainFrame, incomeFragment)
                     .addToBackStack(null).commit();
         } else if (view == expense_btn) {
             getFragmentManager().beginTransaction()
-                    .replace(R.id.mainFrame, new CategoriesFragment())
+                    .replace(R.id.mainFrame, categoriesFragment)
                     .addToBackStack(null).commit();
         }
 

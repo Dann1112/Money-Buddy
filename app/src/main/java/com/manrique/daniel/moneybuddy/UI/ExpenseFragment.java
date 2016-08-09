@@ -36,6 +36,29 @@ public class ExpenseFragment extends Fragment {
         View view;
         view = inflater.inflate(R.layout.cat_items_list, container, false);
 
+        TextView dateView;
+        final StringBuilder date = new StringBuilder();
+        String day, month, monthNumber, year;
+
+        day = this.getArguments().getString("day");
+        month = this.getArguments().getString("month");
+        monthNumber = this.getArguments().getString("monthNumber");
+        year = this.getArguments().getString("year");
+
+        month = month.substring(0, 1).toUpperCase() + month.substring(1);
+        //monthNumber sirve para la base de datos
+
+        date.append(month).append(" ")
+                .append(day).append(", ")
+                .append(year);
+
+        dateView = (TextView) view.findViewById(R.id.date);
+
+        dateView.setText(date);
+
+        date.setLength(0);
+        date.append(day).append(monthNumber).append(year);
+
         layout = view.findViewById(R.id.item_list_header);
         descTxt = (TextView) view.findViewById(R.id.description_header);
         iconHeader = (ImageView) view.findViewById(R.id.header_icon);
@@ -48,7 +71,7 @@ public class ExpenseFragment extends Fragment {
                 FragmentManager fragmentManager = ((MainActivity) getContext()).getSupportFragmentManager();
 
                 Bundle bundle = new Bundle();
-                bundle.putInt("origin", 2);
+                bundle.putInt("origin", 3);
                 NewItemDialog newItemDialog = new NewItemDialog();
                 newItemDialog.setArguments(bundle);
                 newItemDialog.show(fragmentManager, "New Item");

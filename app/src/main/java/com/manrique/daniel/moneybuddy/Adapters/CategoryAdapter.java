@@ -24,14 +24,19 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
     private final int[] colors;
     private final int[] icons;
     private Context context;
+    private String day, month, year, monthNumber;
 
     public CategoryAdapter(Context context, String[] titles, String[] amount, int[] colors,
-                           int[] icons) {
+                           int[] icons, String day, String month, String year, String monthNumber) {
         this.context = context;
         this.titles = titles;
         this.amount = amount;
         this.colors = colors;
         this.icons = icons;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.monthNumber = monthNumber;
     }
 
 
@@ -120,6 +125,10 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
 
         args.putInt("color", background.getColor());
         args.putString("description", (String) description.getText());
+        args.putString("day", day);
+        args.putString("month", month);
+        args.putString("year", year);
+        args.putString("monthNumber", monthNumber);
 
         newFrag.setArguments(args);
         FragmentManager fragmentManager = ((MainActivity) context).getSupportFragmentManager();

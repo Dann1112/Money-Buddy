@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.manrique.daniel.moneybuddy.Adapters.CategoryAdapter;
 import com.manrique.daniel.moneybuddy.CustomViews.ExpandableHeightGridView;
@@ -38,13 +39,40 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (isAdded()) {
 
+            TextView dateView;
+            final StringBuilder date = new StringBuilder();
+            String day, month, monthNumber, year;
+
+            day = this.getArguments().getString("day");
+            month = this.getArguments().getString("month");
+            monthNumber = this.getArguments().getString("monthNumber");
+            year = this.getArguments().getString("year");
+
+            month = month.substring(0, 1).toUpperCase() + month.substring(1);
+            //monthNumber sirve para la base de datos
+
+            date.append(month).append(" ")
+                    .append(day).append(", ")
+                    .append(year);
+
+
+
+
             View new_item;
             CategoryAdapter adapter =
-                    new CategoryAdapter(this.getContext(), titles, amounts, colors, icons);
+                    new CategoryAdapter(this.getContext(), titles, amounts, colors, icons,
+                            day, month, year, monthNumber);
 
             ExpandableHeightGridView grid;
 
             View view = inflater.inflate(R.layout.categories, container, false);
+
+            dateView = (TextView) view.findViewById(R.id.date);
+
+            dateView.setText(date);
+
+            date.setLength(0);
+            date.append(day).append(monthNumber).append(year);
 
             new_item = view.findViewById(R.id.new_exclusive_list_item);
             new_item.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +82,8 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
                     FragmentManager fragmentManager = ((MainActivity) getContext()).getSupportFragmentManager();
 
                     Bundle bundle = new Bundle();
-                    bundle.putInt("origin", 3);
+                    bundle.putString("date", String.valueOf(date));
+                    bundle.putInt("origin", 2);
                     NewItemDialog newItemDialog = new NewItemDialog();
                     newItemDialog.setArguments(bundle);
                     newItemDialog.show(fragmentManager, "New Item");
