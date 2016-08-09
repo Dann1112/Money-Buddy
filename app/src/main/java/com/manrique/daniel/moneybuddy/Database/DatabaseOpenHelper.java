@@ -11,7 +11,7 @@ import com.manrique.daniel.moneybuddy.Database.DatabaseContract.Income;
 
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 4;
 
     public static final String DATABASE_NAME = "moneyBuddy.db";
 
@@ -32,7 +32,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         final String CREATE_CATEGORY_TABLE = "CREATE TABLE " + Category.TABLE_NAME + "(" +
                 Category._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 Category.COLUMN_NAME_TITLE + " TEXT NOT NULL, " +
-                Category.COLUMN_NAME_ICON + " INTEGER NOT NULL, " +
+                Category.COLUMN_NAME_ICON + " TEXT NOT NULL, " +
                 Category.COLUMN_NAME_COLOR + " INTEGER NOT NULL);";
 
         final String CREATE_CATEGORY_ITEM_TABLE = "CREATE TABLE " + CategoryItem.TABLE_NAME + "(" +

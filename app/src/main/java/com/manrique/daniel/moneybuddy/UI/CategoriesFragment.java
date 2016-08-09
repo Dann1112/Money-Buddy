@@ -1,6 +1,7 @@
 package com.manrique.daniel.moneybuddy.UI;
 
-import android.graphics.Color;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -11,8 +12,12 @@ import android.widget.TextView;
 
 import com.manrique.daniel.moneybuddy.Adapters.CategoryAdapter;
 import com.manrique.daniel.moneybuddy.CustomViews.ExpandableHeightGridView;
+import com.manrique.daniel.moneybuddy.Database.DatabaseContract;
+import com.manrique.daniel.moneybuddy.Database.DatabaseOpenHelper;
 import com.manrique.daniel.moneybuddy.MainActivity;
 import com.manrique.daniel.moneybuddy.R;
+
+import java.util.ArrayList;
 
 
 public class CategoriesFragment extends android.support.v4.app.Fragment {
@@ -30,11 +35,8 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
     private final String orange = "#FFAB40";
     private final String grey = "#E0E0E0"; //Grey 300
 
-    private final String[] titles = {"Transporte", "Comida", "Escuela"};
-    private final String[] amounts = {" $300.30", "$64.50", "$52.89"};
-
-    private final int[] colors = {Color.parseColor(orange), Color.parseColor(blue), Color.parseColor(purple)};
-    private final int[] icons = {R.drawable.train, R.drawable.restaurant, R.drawable.school};
+    private ArrayList<String> title, icon;
+    private ArrayList<Integer> color;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (isAdded()) {
@@ -42,6 +44,10 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
             TextView dateView;
             final StringBuilder date = new StringBuilder();
             String day, month, monthNumber, year;
+            View new_item;
+            SQLiteDatabase db;
+            Cursor categoriesCursor;
+
 
             day = this.getArguments().getString("day");
             month = this.getArguments().getString("month");
@@ -55,12 +61,48 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
                     .append(day).append(", ")
                     .append(year);
 
+            db = new DatabaseOpenHelper(this.getContext()).getReadableDatabase();
+
+            categoriesCursor = db.query(DatabaseContract.Category.TABLE_NAME,
+                    new String[]{
+                            "rowid _id",
+                            DatabaseContract.Category.COLUMN_NAME_TITLE,
+                            DatabaseContract.Category.COLUMN_NAME_ICON,
+                            DatabaseContract.Category.COLUMN_NAME_COLOR},
+                    null,
+                    null,
+                    null,
+                    null,
+                    null);
+
+            categoriesCursor.moveToFirst();
+            title = new ArrayList<>();
+            icon = new ArrayList<>();
+            color = new ArrayList<>();
 
 
+            for (; !categoriesCursor.isAfterLast(); categoriesCursor.moveToNext()) {
+                title.add(
+                        categoriesCursor.getString(
+                                categoriesCursor.getColumnIndexOrThrow(
+                                        DatabaseContract.Category.COLUMN_NAME_TITLE)));
 
-            View new_item;
+                icon.add(
+                        categoriesCursor.getString(
+                                categoriesCursor.getColumnIndexOrThrow(
+                                        DatabaseContract.Category.COLUMN_NAME_ICON)));
+
+                color.add(
+                        categoriesCursor.getInt(
+                                categoriesCursor.getColumnIndexOrThrow(
+                                        DatabaseContract.Category.COLUMN_NAME_COLOR)));
+
+            }
+            categoriesCursor.close();
+
+
             CategoryAdapter adapter =
-                    new CategoryAdapter(this.getContext(), titles, amounts, colors, icons,
+                    new CategoryAdapter(this.getContext(), title, icon, color,
                             day, month, year, monthNumber);
 
             ExpandableHeightGridView grid;

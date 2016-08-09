@@ -82,7 +82,7 @@ public class IncomeFragment extends Fragment {
 
         incomeCursor.moveToFirst();
 
-        do {
+        for (; !incomeCursor.isAfterLast(); incomeCursor.moveToNext()) {
             descriptions.add(
                     incomeCursor.getString(
                             incomeCursor.getColumnIndexOrThrow(
@@ -93,7 +93,7 @@ public class IncomeFragment extends Fragment {
                             incomeCursor.getColumnIndexOrThrow(
                                     DatabaseContract.Income.COLUMN_NAME_AMOUNT)));
 
-        } while (incomeCursor.moveToNext());
+        }
 
         incomeAdapter = new ItemListAdapter(getContext(), descriptions, amounts);
         incomeList.setAdapter(incomeAdapter);

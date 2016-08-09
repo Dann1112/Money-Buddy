@@ -68,6 +68,8 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
             getFragmentManager().beginTransaction()
                     .replace(R.id.mainFrame, categoriesFragment)
                     .addToBackStack(null).commit();
+        } else if (view == balance_btn) {
+            this.getContext().deleteDatabase("moneyBuddy.db");
         }
 
     }

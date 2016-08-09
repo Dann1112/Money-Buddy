@@ -156,7 +156,7 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
                         ContentValues testValues = new ContentValues();
                         testValues.put(DatabaseContract.Category.COLUMN_NAME_TITLE, catName);
                         testValues.put(DatabaseContract.Category.COLUMN_NAME_ICON, iconSelected);
-                        testValues.put(DatabaseContract.Category.COLUMN_NAME_COLOR, colorSelected);
+                        testValues.put(DatabaseContract.Category.COLUMN_NAME_COLOR, Integer.parseInt(colorSelected));
 
                         try {
                             db.insert(DatabaseContract.Category.TABLE_NAME, null, testValues);

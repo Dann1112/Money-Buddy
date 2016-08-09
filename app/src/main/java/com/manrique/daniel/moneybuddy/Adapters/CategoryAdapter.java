@@ -1,6 +1,7 @@
 package com.manrique.daniel.moneybuddy.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -16,33 +17,36 @@ import com.manrique.daniel.moneybuddy.MainActivity;
 import com.manrique.daniel.moneybuddy.R;
 import com.manrique.daniel.moneybuddy.UI.ExpenseFragment;
 import com.manrique.daniel.moneybuddy.UI.NewCatDialog;
+import com.manrique.daniel.moneybuddy.Validation;
+
+import java.util.ArrayList;
 
 public class CategoryAdapter extends BaseAdapter implements View.OnClickListener {
 
-    private final String[] titles;
-    private final String[] amount;
-    private final int[] colors;
-    private final int[] icons;
+    private ArrayList<String> title, icon;
+    private ArrayList<Integer> color;
     private Context context;
     private String day, month, year, monthNumber;
 
-    public CategoryAdapter(Context context, String[] titles, String[] amount, int[] colors,
-                           int[] icons, String day, String month, String year, String monthNumber) {
+    public CategoryAdapter(Context context, ArrayList<String> title, ArrayList<String> icon,
+                           ArrayList<Integer> color, String day, String month, String year,
+                           String monthNumber) {
+
         this.context = context;
-        this.titles = titles;
-        this.amount = amount;
-        this.colors = colors;
-        this.icons = icons;
+        this.title = title;
+        this.icon = icon;
+        this.color = color;
         this.day = day;
         this.month = month;
         this.year = year;
         this.monthNumber = monthNumber;
+
     }
 
 
     @Override
     public int getCount() {
-        return titles.length + 1;
+        return title.size() + 1;
     }
 
     @Override
@@ -62,7 +66,7 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
         View cat;
 
         //Set last view as the "New Category" view
-        if (i == titles.length) {
+        if (i == title.size()) {
             // get layout from mobile.xml
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -98,13 +102,13 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
 
         //Set values to the view
         TextView txt = (TextView) cat.findViewById(R.id.category_name);
-        txt.setText(titles[i]);
-        txt = (TextView) cat.findViewById(R.id.category_amount);
-        txt.setText(amount[i]);
+        txt.setText(title.get(i));
+
         ImageView img = (ImageView) cat.findViewById(R.id.category_icon);
-        img.setImageResource(icons[i]);
+        img.setImageResource(Validation.transformToIcon(icon.get(i)));
+
         LinearLayout linear = (LinearLayout) cat.findViewById(R.id.category_layout);
-        linear.setBackgroundColor(colors[i]);
+        linear.setBackgroundColor(Color.parseColor(Validation.transformToColor(color.get(i))));
 
         return cat;
 

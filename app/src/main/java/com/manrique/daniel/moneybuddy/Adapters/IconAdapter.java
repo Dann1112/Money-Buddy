@@ -157,34 +157,35 @@ public class IconAdapter extends BaseAdapter {
                 else return null;
 
             case 3:
-                if (activities[i] == R.drawable.brush) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.camera) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.tools) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.run) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.puzzle) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.flower) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.gamepad) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.golf) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.book) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.landscape) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.bar) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.cafe) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.restaurant) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.library) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.nature) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.art) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.pets) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.pool) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.chat) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.row) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.voice) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.shopping) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.shopping1) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.smoke) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.videocam) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.vg) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.couch) return String.valueOf("bookmark");
-                else if (activities[i] == R.drawable.work) return String.valueOf("bookmark");
+                if (activities[i] == R.drawable.brush) return String.valueOf("brush");
+                else if (activities[i] == R.drawable.camera) return String.valueOf("camera");
+                else if (activities[i] == R.drawable.tools) return String.valueOf("tools");
+                else if (activities[i] == R.drawable.run) return String.valueOf("run");
+                else if (activities[i] == R.drawable.puzzle) return String.valueOf("puzzle");
+                else if (activities[i] == R.drawable.flower) return String.valueOf("flower");
+                else if (activities[i] == R.drawable.gamepad) return String.valueOf("gamepad");
+                else if (activities[i] == R.drawable.golf) return String.valueOf("golf");
+                else if (activities[i] == R.drawable.book) return String.valueOf("book");
+                else if (activities[i] == R.drawable.landscape) return String.valueOf("landscape");
+                else if (activities[i] == R.drawable.bar) return String.valueOf("bar");
+                else if (activities[i] == R.drawable.cafe) return String.valueOf("cafe");
+                else if (activities[i] == R.drawable.restaurant)
+                    return String.valueOf("restaurant");
+                else if (activities[i] == R.drawable.library) return String.valueOf("library");
+                else if (activities[i] == R.drawable.nature) return String.valueOf("nature");
+                else if (activities[i] == R.drawable.art) return String.valueOf("art");
+                else if (activities[i] == R.drawable.pets) return String.valueOf("pets");
+                else if (activities[i] == R.drawable.pool) return String.valueOf("pool");
+                else if (activities[i] == R.drawable.chat) return String.valueOf("chat");
+                else if (activities[i] == R.drawable.row) return String.valueOf("row");
+                else if (activities[i] == R.drawable.voice) return String.valueOf("voice");
+                else if (activities[i] == R.drawable.shopping) return String.valueOf("shopping");
+                else if (activities[i] == R.drawable.shopping1) return String.valueOf("shopping1");
+                else if (activities[i] == R.drawable.smoke) return String.valueOf("smoke");
+                else if (activities[i] == R.drawable.videocam) return String.valueOf("videocam");
+                else if (activities[i] == R.drawable.vg) return String.valueOf("vg");
+                else if (activities[i] == R.drawable.couch) return String.valueOf("couch");
+                else if (activities[i] == R.drawable.work) return String.valueOf("work");
                 else return null;
 
             case 4:
