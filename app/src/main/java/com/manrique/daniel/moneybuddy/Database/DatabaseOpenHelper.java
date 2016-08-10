@@ -6,12 +6,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.manrique.daniel.moneybuddy.Database.DatabaseContract.Category;
 import com.manrique.daniel.moneybuddy.Database.DatabaseContract.CategoryItem;
+import com.manrique.daniel.moneybuddy.Database.DatabaseContract.ExclusiveExpense;
 import com.manrique.daniel.moneybuddy.Database.DatabaseContract.Expense;
 import com.manrique.daniel.moneybuddy.Database.DatabaseContract.Income;
 
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 1;
 
     public static final String DATABASE_NAME = "moneyBuddy.db";
 
@@ -25,15 +26,22 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
         final String CREATE_INCOME_TABLE = "CREATE TABLE " + Income.TABLE_NAME + "(" +
                 Income._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                Income.COLUMN_NAME_DATE + " INTEGER NOT NULL, " +
+                Income.COLUMN_NAME_DATE + " TEXT NOT NULL, " +
                 Income.COLUMN_NAME_DESCRIPTION + " TEXT NOT NULL, " +
-                Income.COLUMN_NAME_AMOUNT + " REAL NOT NULL);";
+                Income.COLUMN_NAME_AMOUNT + " TEXT NOT NULL);";
 
         final String CREATE_CATEGORY_TABLE = "CREATE TABLE " + Category.TABLE_NAME + "(" +
                 Category.CATEGORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 Category.COLUMN_NAME_TITLE + " TEXT NOT NULL, " +
                 Category.COLUMN_NAME_ICON + " TEXT NOT NULL, " +
                 Category.COLUMN_NAME_COLOR + " INTEGER NOT NULL);";
+
+        final String CREATE_EXCLUSIVE_EXPENSE_TABLE = "CREATE TABLE " + ExclusiveExpense.TABLE_NAME + "(" +
+                ExclusiveExpense._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                ExclusiveExpense.COLUMN_NAME_DATE + " TEXT NOT NULL, " +
+                ExclusiveExpense.COLUMN_NAME_DESCRIPTION + " TEXT NOT NULL, " +
+                ExclusiveExpense.COLUMN_NAME_AMOUNT + " TEXT NOT NULL);";
+
 
         final String CREATE_CATEGORY_ITEM_TABLE = "CREATE TABLE " + CategoryItem.TABLE_NAME + "(" +
                 CategoryItem._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -51,6 +59,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
                 CategoryItem.TABLE_NAME + "(" + CategoryItem._ID + "));";
 
         db.execSQL(CREATE_INCOME_TABLE);
+        db.execSQL(CREATE_EXCLUSIVE_EXPENSE_TABLE);
         db.execSQL(CREATE_CATEGORY_TABLE);
         db.execSQL(CREATE_CATEGORY_ITEM_TABLE);
         db.execSQL(CREATE_EXPENSE_TABLE);

@@ -89,12 +89,14 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
 
                     SQLiteDatabase db = new DatabaseOpenHelper(this.getContext()).getWritableDatabase();
                     ContentValues testValues = new ContentValues();
-                    testValues.put(DatabaseContract.Expense.COLUMN_NAME_DATE, date);
-                    testValues.put(DatabaseContract.Expense.COLUMN_NAME_AMOUNT,
+                    testValues.put(DatabaseContract.ExclusiveExpense.COLUMN_NAME_DATE, date);
+                    testValues.put(DatabaseContract.ExclusiveExpense.COLUMN_NAME_DESCRIPTION,
+                            String.valueOf(descriptionEdTxt.getText()));
+                    testValues.put(DatabaseContract.ExclusiveExpense.COLUMN_NAME_AMOUNT,
                             String.valueOf(amountEdTxt.getText()));
 
                     try {
-                        db.insert(DatabaseContract.Expense.TABLE_NAME, null, testValues);
+                        db.insert(DatabaseContract.ExclusiveExpense.TABLE_NAME, null, testValues);
                         db.close();
                     } catch (Exception e) {
                         Toast.makeText(this.getContext(), "Couldn't insert to DB", Toast.LENGTH_SHORT).show();

@@ -38,7 +38,15 @@ public final class DatabaseContract {
         public static final String _ID = "category_id";
         public static final String COLUMN_NAME_CATEGORY_ITEM_KEY = "category_item_id";
         public static final String COLUMN_NAME_AMOUNT = "amount";
-
     }
+
+    public static final class ExclusiveExpense implements BaseColumns {
+        public static final String _ID = "exclusive_id";
+        public static final String TABLE_NAME = "exclusive_expense";
+        public static final String COLUMN_NAME_DATE = "date";
+        public static final String COLUMN_NAME_DESCRIPTION = "description";
+        public static final String COLUMN_NAME_AMOUNT = "amount";
+    }
+
 
 }

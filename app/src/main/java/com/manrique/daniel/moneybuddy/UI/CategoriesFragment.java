@@ -8,9 +8,11 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.manrique.daniel.moneybuddy.Adapters.CategoryAdapter;
+import com.manrique.daniel.moneybuddy.Adapters.ItemListAdapter;
 import com.manrique.daniel.moneybuddy.CustomViews.ExpandableHeightGridView;
 import com.manrique.daniel.moneybuddy.Database.DatabaseContract;
 import com.manrique.daniel.moneybuddy.Database.DatabaseOpenHelper;
@@ -42,6 +44,9 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
         if (isAdded()) {
 
             TextView dateView;
+            ListView exclusiveList;
+            ItemListAdapter exclusiveAdapter;
+            Cursor exclusiveCursor;
             final StringBuilder date = new StringBuilder();
             String day, month, monthNumber, year;
             View new_item;
@@ -117,6 +122,7 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
 
             ExpandableHeightGridView grid;
 
+
             View view = inflater.inflate(R.layout.categories, container, false);
 
             dateView = (TextView) view.findViewById(R.id.date);
@@ -145,6 +151,46 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
             grid = (ExpandableHeightGridView) view.findViewById(R.id.grid_usual);
             grid.setAdapter(adapter);
             grid.setExpanded(true);
+
+            exclusiveList = (ListView) view.findViewById(R.id.exclusive_listview);
+
+            db = new DatabaseOpenHelper(this.getContext()).getReadableDatabase();
+
+            exclusiveCursor = db.query(DatabaseContract.ExclusiveExpense.TABLE_NAME,
+                    new String[]{
+                            "rowid _id",
+                            DatabaseContract.ExclusiveExpense.COLUMN_NAME_DATE,
+                            DatabaseContract.ExclusiveExpense.COLUMN_NAME_DESCRIPTION,
+                            DatabaseContract.ExclusiveExpense.COLUMN_NAME_AMOUNT},
+                    null,
+                    null,
+                    null,
+                    null,
+                    null);
+
+            exclusiveCursor.moveToFirst();
+
+            ArrayList<String> descriptions, amounts;
+            descriptions = new ArrayList<>();
+            amounts = new ArrayList<>();
+
+            for (; !exclusiveCursor.isAfterLast(); exclusiveCursor.moveToNext()) {
+
+                descriptions.add(
+                        exclusiveCursor.getString(
+                                exclusiveCursor.getColumnIndexOrThrow(
+                                        DatabaseContract.ExclusiveExpense.COLUMN_NAME_DESCRIPTION)));
+
+                amounts.add("$ " +
+                        exclusiveCursor.getString(
+                                exclusiveCursor.getColumnIndexOrThrow(
+                                        DatabaseContract.ExclusiveExpense.COLUMN_NAME_AMOUNT)));
+
+            }
+            exclusiveCursor.close();
+
+            exclusiveAdapter = new ItemListAdapter(getContext(), descriptions, amounts);
+            exclusiveList.setAdapter(exclusiveAdapter);
 
             return view;
         } else return null;
