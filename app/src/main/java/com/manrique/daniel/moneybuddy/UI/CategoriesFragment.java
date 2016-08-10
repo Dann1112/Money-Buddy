@@ -36,7 +36,7 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
     private final String grey = "#E0E0E0"; //Grey 300
 
     private ArrayList<String> title, icon;
-    private ArrayList<Integer> color;
+    private ArrayList<Integer> color, categoryId;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (isAdded()) {
@@ -76,12 +76,20 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
                     null);
 
             categoriesCursor.moveToFirst();
+            categoryId = new ArrayList<>();
             title = new ArrayList<>();
             icon = new ArrayList<>();
             color = new ArrayList<>();
 
 
             for (; !categoriesCursor.isAfterLast(); categoriesCursor.moveToNext()) {
+
+
+                categoryId.add(
+                        categoriesCursor.getInt(
+                                categoriesCursor.getColumnIndexOrThrow(
+                                        "_id")));
+
                 title.add(
                         categoriesCursor.getString(
                                 categoriesCursor.getColumnIndexOrThrow(
@@ -97,12 +105,14 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
                                 categoriesCursor.getColumnIndexOrThrow(
                                         DatabaseContract.Category.COLUMN_NAME_COLOR)));
 
+
             }
+
             categoriesCursor.close();
 
 
             CategoryAdapter adapter =
-                    new CategoryAdapter(this.getContext(), title, icon, color,
+                    new CategoryAdapter(this.getContext(), title, icon, color, categoryId,
                             day, month, year, monthNumber);
 
             ExpandableHeightGridView grid;
@@ -141,3 +151,4 @@ public class CategoriesFragment extends android.support.v4.app.Fragment {
 
     }
 }
+

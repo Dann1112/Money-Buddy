@@ -18,15 +18,12 @@ import com.manrique.daniel.moneybuddy.Validation;
 public class ExpenseFragment extends Fragment {
 
     ListView listView;
-    //String[] names = {"Metro", "Taxi", "Mexibus"};
-    //String[] amounts = {"192.0", "139.12", "194.27"};
     View layout;
     TextView descTxt;
     ImageView iconHeader;
 
 
     public ExpenseFragment() {
-
 
     }
 
@@ -41,6 +38,7 @@ public class ExpenseFragment extends Fragment {
         final StringBuilder date = new StringBuilder();
         String day, month, monthNumber, year;
         String icon;
+        final int categoryId;
 
         day = this.getArguments().getString("day");
         month = this.getArguments().getString("month");
@@ -48,6 +46,7 @@ public class ExpenseFragment extends Fragment {
         year = this.getArguments().getString("year");
 
         icon = this.getArguments().getString("icon");
+        categoryId = this.getArguments().getInt("categoryId");
 
         month = month.substring(0, 1).toUpperCase() + month.substring(1);
         //monthNumber sirve para la base de datos
@@ -77,6 +76,8 @@ public class ExpenseFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putInt("origin", 3);
+                bundle.putInt("categoryId", categoryId);
+                bundle.putString("date", String.valueOf(date));
                 NewItemDialog newItemDialog = new NewItemDialog();
                 newItemDialog.setArguments(bundle);
                 newItemDialog.show(fragmentManager, "New Item");

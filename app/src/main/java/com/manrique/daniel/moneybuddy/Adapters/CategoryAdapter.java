@@ -26,19 +26,20 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
 
     public ArrayList<String> icon;
     private ArrayList<String> title;
-    private ArrayList<Integer> color;
+    private ArrayList<Integer> color, categoryId;
     private Context context;
     private String iconSelected;
     private String day, month, year, monthNumber;
 
     public CategoryAdapter(Context context, ArrayList<String> title, ArrayList<String> icon,
-                           ArrayList<Integer> color, String day, String month, String year,
-                           String monthNumber) {
+                           ArrayList<Integer> color, ArrayList<Integer> categoryId,
+                           String day, String month, String year, String monthNumber) {
 
         this.context = context;
         this.title = title;
         this.icon = icon;
         this.color = color;
+        this.categoryId = categoryId;
         this.day = day;
         this.month = month;
         this.year = year;
@@ -105,6 +106,7 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
 
         //Set values to the view
         TextView txt = (TextView) cat.findViewById(R.id.category_name);
+        txt.setTag(categoryId.get(i));
         txt.setText(title.get(i));
 
         ImageView img = (ImageView) cat.findViewById(R.id.category_icon);
@@ -141,6 +143,7 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
         args.putString("year", year);
         args.putString("monthNumber", monthNumber);
         args.putString("icon", String.valueOf(icon.getTag()));
+        args.putInt("categoryId", (Integer) description.getTag());
 
         newFrag.setArguments(args);
         FragmentManager fragmentManager = ((MainActivity) context).getSupportFragmentManager();

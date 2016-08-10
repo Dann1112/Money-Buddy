@@ -20,7 +20,7 @@ import com.manrique.daniel.moneybuddy.Validation;
 public class NewItemDialog extends DialogFragment implements View.OnClickListener {
 
 
-    private int origin;
+    private int origin, categoryId;
     private Button cancelBtn, confirmBtn;
     private EditText descriptionEdTxt, amountEdTxt;
     private String date;
@@ -40,6 +40,7 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
         bundle = this.getArguments();
         origin = bundle.getInt("origin");
         date = bundle.getString("date");
+        categoryId = bundle.getInt("categoryId");
 
         View view = inflater.inflate(R.layout.new_item_dialog, null);
         confirmBtn = (Button) view.findViewById(R.id.confirm_new_item_button);
@@ -77,16 +78,50 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
 
                     try {
                         db.insert(DatabaseContract.Income.TABLE_NAME, null, testValues);
+                        db.close();
+                    } catch (Exception e) {
+                        Toast.makeText(this.getContext(), "ERROR insert to DB", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } else if (origin == 2) {
+
+
+                    SQLiteDatabase db = new DatabaseOpenHelper(this.getContext()).getWritableDatabase();
+                    ContentValues testValues = new ContentValues();
+                    testValues.put(DatabaseContract.Expense.COLUMN_NAME_DATE, date);
+                    testValues.put(DatabaseContract.Expense.COLUMN_NAME_AMOUNT,
+                            String.valueOf(amountEdTxt.getText()));
+
+                    try {
+                        db.insert(DatabaseContract.Expense.TABLE_NAME, null, testValues);
+                        db.close();
+                    } catch (Exception e) {
+                        Toast.makeText(this.getContext(), "Couldn't insert to DB", Toast.LENGTH_SHORT).show();
+                    }
+
+                } else if (origin == 3) {
+
+
+                    SQLiteDatabase db = new DatabaseOpenHelper(this.getContext()).getWritableDatabase();
+                    ContentValues testValues = new ContentValues();
+                    testValues.put(DatabaseContract.Expense.COLUMN_NAME_DATE, date);
+                    testValues.put(DatabaseContract.Expense.COLUMN_NAME_CATEGORY_ITEM_KEY, categoryId);
+                    testValues.put(DatabaseContract.Expense.COLUMN_NAME_AMOUNT,
+                            String.valueOf(amountEdTxt.getText()));
+
+                    try {
+                        Toast.makeText(getContext(), date + "-" + categoryId + "-" + amountEdTxt.getText(),
+                                Toast.LENGTH_SHORT).show();
+
+                        db.insert(DatabaseContract.Expense.TABLE_NAME, null, testValues);
+                        db.close();
                     } catch (Exception e) {
                         Toast.makeText(this.getContext(), "Couldn't insert to DB", Toast.LENGTH_SHORT).show();
                     }
 
                 }
 
-
-                //AQUI SE CARGA INFORMACION A BASE DE DATOS DEPENDIENDO DEL VALOR
-                //QUE TENGA origin, PARA SABER EN QUE TABLA SE VA A GUARDAR
-                // 1 = NEW_INCOME    2 = NEW_EXPENSE
                 dismiss();
             }
 
