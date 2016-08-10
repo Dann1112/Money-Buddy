@@ -21,11 +21,14 @@ import com.manrique.daniel.moneybuddy.Validation;
 
 import java.util.ArrayList;
 
+
 public class CategoryAdapter extends BaseAdapter implements View.OnClickListener {
 
-    private ArrayList<String> title, icon;
+    public ArrayList<String> icon;
+    private ArrayList<String> title;
     private ArrayList<Integer> color;
     private Context context;
+    private String iconSelected;
     private String day, month, year, monthNumber;
 
     public CategoryAdapter(Context context, ArrayList<String> title, ArrayList<String> icon,
@@ -105,7 +108,9 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
         txt.setText(title.get(i));
 
         ImageView img = (ImageView) cat.findViewById(R.id.category_icon);
-        img.setImageResource(Validation.transformToIcon(icon.get(i)));
+        iconSelected = icon.get(i);
+        img.setImageResource(Validation.transformToIcon(iconSelected));
+        img.setTag(String.valueOf(iconSelected));
 
         LinearLayout linear = (LinearLayout) cat.findViewById(R.id.category_layout);
         linear.setBackgroundColor(Color.parseColor(Validation.transformToColor(color.get(i))));
@@ -117,15 +122,17 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
     @Override
     public void onClick(View view) {
 
-        ImageView icon;
         TextView description;
+        ColorDrawable background;
+        ImageView icon;
+
 
         ExpenseFragment newFrag = new ExpenseFragment();
         Bundle args = new Bundle();
-        ColorDrawable background = (ColorDrawable) view.getBackground();
+        background = (ColorDrawable) view.getBackground();
         description = (TextView) view.findViewById(R.id.category_name);
-
         icon = (ImageView) view.findViewById(R.id.category_icon);
+
 
         args.putInt("color", background.getColor());
         args.putString("description", (String) description.getText());
@@ -133,6 +140,7 @@ public class CategoryAdapter extends BaseAdapter implements View.OnClickListener
         args.putString("month", month);
         args.putString("year", year);
         args.putString("monthNumber", monthNumber);
+        args.putString("icon", String.valueOf(icon.getTag()));
 
         newFrag.setArguments(args);
         FragmentManager fragmentManager = ((MainActivity) context).getSupportFragmentManager();

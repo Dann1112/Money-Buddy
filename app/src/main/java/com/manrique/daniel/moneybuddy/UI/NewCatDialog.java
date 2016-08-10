@@ -141,15 +141,12 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
             if (Validation.validateAlpha(getContext(), categoryNameBox, "Category Name")) {
 
                 catName = String.valueOf(categoryNameBox.getText()).trim();
-                Toast.makeText(getContext(), catName, Toast.LENGTH_SHORT).show();
 
                 if (!validateIconSelected().equals("default")) {
                     iconSelected = validateIconSelected();
-                    Toast.makeText(getContext(), iconSelected, Toast.LENGTH_SHORT).show();
 
                     if (!validateColorSelected().equals("default")) {
                         colorSelected = validateColorSelected();
-                        Toast.makeText(getContext(), colorSelected, Toast.LENGTH_SHORT).show();
 
 
                         SQLiteDatabase db = new DatabaseOpenHelper(this.getContext()).getWritableDatabase();
@@ -160,10 +157,8 @@ public class NewCatDialog extends Fragment implements View.OnClickListener {
 
                         try {
                             db.insert(DatabaseContract.Category.TABLE_NAME, null, testValues);
-                            Toast.makeText(this.getContext(), "Nailed It", Toast.LENGTH_SHORT).show();
                             getFragmentManager().popBackStack();
                         } catch (Exception e) {
-                            Toast.makeText(this.getContext(), "Impossible", Toast.LENGTH_SHORT).show();
                         }
 
 

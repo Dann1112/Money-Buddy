@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.manrique.daniel.moneybuddy.MainActivity;
 import com.manrique.daniel.moneybuddy.R;
+import com.manrique.daniel.moneybuddy.Validation;
 
 public class ExpenseFragment extends Fragment {
 
@@ -39,11 +40,14 @@ public class ExpenseFragment extends Fragment {
         TextView dateView;
         final StringBuilder date = new StringBuilder();
         String day, month, monthNumber, year;
+        String icon;
 
         day = this.getArguments().getString("day");
         month = this.getArguments().getString("month");
         monthNumber = this.getArguments().getString("monthNumber");
         year = this.getArguments().getString("year");
+
+        icon = this.getArguments().getString("icon");
 
         month = month.substring(0, 1).toUpperCase() + month.substring(1);
         //monthNumber sirve para la base de datos
@@ -62,6 +66,7 @@ public class ExpenseFragment extends Fragment {
         layout = view.findViewById(R.id.item_list_header);
         descTxt = (TextView) view.findViewById(R.id.description_header);
         iconHeader = (ImageView) view.findViewById(R.id.header_icon);
+        iconHeader.setImageResource(Validation.transformToIcon(icon));
         View new_item = view.findViewById(R.id.add_new_item);
 
         new_item.setOnClickListener(new View.OnClickListener() {
@@ -81,11 +86,13 @@ public class ExpenseFragment extends Fragment {
         int color = getArguments().getInt("color", 0);
         String description = getArguments().getString("description", "Default");
 
+
         layout.setBackgroundColor(color);
         descTxt.setText(description);
 
 
         listView = (ListView) view.findViewById(R.id.items_listview);
+
         //ItemListAdapter itemListAdapter = new ItemListAdapter(getContext(), names, amounts, names.length);
 
         //listView.setAdapter(itemListAdapter);
