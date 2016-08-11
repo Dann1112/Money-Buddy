@@ -33,9 +33,6 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
     private ArrayList<String> amounts;//Arraylist to store incomes' amounts from DB
     private ItemListAdapter incomeAdapter; //Adapter to fulfill 'incomeListView'
 
-
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -73,6 +70,11 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
         //Sets date in toolbar
         dateView.setText(date);
 
+        //Cleans date to build date to store it if there is a new item to be created
+        date.setLength(0);
+        date.append(day).append(monthNumber).append(year);
+
+        //Gets data from database
         updateListView();
 
 
@@ -96,7 +98,7 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
                         DatabaseContract.Income.COLUMN_NAME_DATE,
                         DatabaseContract.Income.COLUMN_NAME_DESCRIPTION,
                         DatabaseContract.Income.COLUMN_NAME_AMOUNT},
-                null,
+                DatabaseContract.Income.COLUMN_NAME_DATE + " = " + date,
                 null,
                 null,
                 null,
@@ -150,9 +152,6 @@ public class IncomeFragment extends Fragment implements View.OnClickListener {
             //Gets support fragment manager
             fragmentManager = ((MainActivity) getContext()).getSupportFragmentManager();
 
-            //Cleans date to build date to store it if there is a new item to be created
-            date.setLength(0);
-            date.append(day).append(monthNumber).append(year);
 
             bundle = new Bundle();
             bundle.putString("date", String.valueOf(date));
