@@ -63,7 +63,7 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
     public void onClick(View view) {
 
         if (view == confirmBtn) {
-            if (Validation.validateAlpha(getContext(), descriptionEdTxt, "Item Name") &&
+            if (//Validation.validateAlpha(getContext(), descriptionEdTxt, "Item Name") &&
                     Validation.validateNumber(getContext(), amountEdTxt, "Amount")) {
 
                 if (origin == 1) {
@@ -78,6 +78,7 @@ public class NewItemDialog extends DialogFragment implements View.OnClickListene
 
                     try {
                         db.insert(DatabaseContract.Income.TABLE_NAME, null, testValues);
+                        getTargetFragment().onActivityResult(getTargetRequestCode(), 1, null);
                         db.close();
                     } catch (Exception e) {
                         Toast.makeText(this.getContext(), "ERROR insert to DB", Toast.LENGTH_SHORT).show();
