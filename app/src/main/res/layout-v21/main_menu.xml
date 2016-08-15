@@ -62,7 +62,7 @@
             android:gravity="center"
             android:maxEms="40"
             android:text="@string/default_date"
-            android:textSize="@dimen/text_size_medium" />
+            android:textSize="@dimen/text_size_small" />
 
         <ImageView
             android:id="@+id/date_right_arrow"
