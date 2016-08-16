@@ -1,5 +1,6 @@
 package com.manrique.daniel.moneybuddy.UI;
 
+import android.app.DatePickerDialog;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,8 +24,9 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class MainMenuFragment extends android.support.v4.app.Fragment
-        implements View.OnClickListener {
+        implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
+    Calendar today;
     private TextView dateView;
     private Button income_btn, expense_btn, balance_btn;
     private ImageView lastDay, nextDay;
@@ -32,6 +35,7 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
     private TextView incomeAmount;
     private StringBuilder amount;
     private RelativeLayout layout;
+    private DatePickerDialog dpd;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
         layout = (RelativeLayout) view.findViewById(R.id.date_layout);
 
         calendar = Calendar.getInstance();
+        today = Calendar.getInstance();
 
 
         layout.setBackgroundColor(ContextCompat.getColor(this.getContext(), R.color.colorAccent));
@@ -66,6 +71,7 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
         balance_btn.setOnClickListener(this);
         nextDay.setOnClickListener(this);
         lastDay.setOnClickListener(this);
+        dateView.setOnClickListener(this);
 
         amount = new StringBuilder();
 
@@ -181,14 +187,24 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
             incomeAmount.setText(amount);
 
 
+        } else if (view == dateView) {
+
+            int day, month, year;
+
+            day = Integer.parseInt(
+                    new SimpleDateFormat("dd", Locale.getDefault()).format(calendar.getTime()));
+            month = Integer.parseInt(
+                    new SimpleDateFormat("M", Locale.getDefault()).format(calendar.getTime()));
+            year = Integer.parseInt(
+                    new SimpleDateFormat("yyyy", Locale.getDefault()).format(calendar.getTime()));
+
+            dpd = new DatePickerDialog(getContext(), this, year, month - 1, day);
+            dpd.show();
         }
 
     }
 
     private void setDateToolbarTodayColor() {
-
-        Calendar today;
-        today = Calendar.getInstance();
 
         if (dateView.getText().equals(sdf.format(today.getTime())))
             layout.setBackgroundColor(
@@ -199,5 +215,16 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
                     ContextCompat.getColor(this.getContext(), R.color.colorPrimary));
 
 
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+        calendar.set(i, i1, i2);
+        dateView.setText(sdf.format(calendar.getTime()));
+        setDateToolbarTodayColor();
+
+        amount = new StringBuilder();
+        amount.append("$ ").append(String.valueOf(getTotalIncomeOfTheDay()));
+        incomeAmount.setText(amount);
     }
 }
