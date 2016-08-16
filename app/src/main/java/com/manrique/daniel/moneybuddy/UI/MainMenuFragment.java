@@ -4,11 +4,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.manrique.daniel.moneybuddy.Database.DatabaseContract;
@@ -29,6 +31,7 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
     private SimpleDateFormat sdf;
     private TextView incomeAmount;
     private StringBuilder amount;
+    private RelativeLayout layout;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,14 +51,15 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
         nextDay = (ImageView) view.findViewById(R.id.date_right_arrow);
         lastDay = (ImageView) view.findViewById(R.id.date_left_arrow);
         incomeAmount = (TextView) view.findViewById(R.id.income_amount);
+        layout = (RelativeLayout) view.findViewById(R.id.date_layout);
 
         calendar = Calendar.getInstance();
+
+
+        layout.setBackgroundColor(ContextCompat.getColor(this.getContext(), R.color.colorAccent));
+
         sdf = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault());
-
         dateView.setText(sdf.format(calendar.getTime()));
-
-
-
 
         income_btn.setOnClickListener(this);
         expense_btn.setOnClickListener(this);
@@ -158,7 +162,7 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
         } else if (view == nextDay) {
             calendar.add(Calendar.DAY_OF_WEEK, 1);
             dateView.setText(sdf.format(calendar.getTime()));
-
+            setDateToolbarTodayColor();
 
             amount = new StringBuilder();
 
@@ -169,6 +173,7 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
         } else if (view == lastDay) {
             calendar.add(Calendar.DAY_OF_WEEK, -1);
             dateView.setText(sdf.format(calendar.getTime()));
+            setDateToolbarTodayColor();
 
             amount = new StringBuilder();
 
@@ -177,6 +182,22 @@ public class MainMenuFragment extends android.support.v4.app.Fragment
 
 
         }
+
+    }
+
+    private void setDateToolbarTodayColor() {
+
+        Calendar today;
+        today = Calendar.getInstance();
+
+        if (dateView.getText().equals(sdf.format(today.getTime())))
+            layout.setBackgroundColor(
+                    ContextCompat.getColor(this.getContext(), R.color.colorAccent));
+
+        else
+            layout.setBackgroundColor(
+                    ContextCompat.getColor(this.getContext(), R.color.colorPrimary));
+
 
     }
 }
